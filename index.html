@@ -12,8 +12,34 @@
   </header>
 
   <main>
-    <!-- Aquí irán calendario, materias y exámenes -->
+    <section id="calendario" aria-labelledby="calendario-titulo">
+  <h2 id="calendario-titulo">Calendario</h2>
+  <nav aria-label="Navegación de mes">
+    <button type="button" aria-label="Mes anterior">‹</button>
+    <span>Septiembre</span>
+    <label for="anio-select">Año</label>
+    <select id="anio-select">
+      <option value="2025">2025</option>
+    </select>
+    <button type="button" aria-label="Mes siguiente">›</button>
+  </nav>
+
+  <table>
+    <caption>Días de septiembre 2025</caption>
+    <thead>
+      <tr><th>Lu</th><th>Ma</th><th>Mi</th><th>Ju</th><th>Vi</th><th>Sa</th><th>Do</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td></tr>
+      <tr><td>8</td><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td></tr>
+      <!-- resto de semanas -->
+    </tbody>
+  </table>
+
+  <!-- Sigue en Parte 3 -->
+</section>
   </main>
+
 
   <footer>
     <nav aria-label="Acciones principales">
