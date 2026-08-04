@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EduPlaner</title>
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: #000;
+    background: #fff;
+  }
+
+  header {
+    border-bottom: 2px solid #000;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  header h1 {
+    font-size: 20px;
+    margin: 0;
+  }
+
+  .avatar {
+    width: 36px;
+    height: 36px;
+    border: 1px solid #000;
+    border-radius: 50%;
+  }
+
+  .hero {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    border-bottom: 2px solid #000;
+  }
+
+  .hero-img {
+    flex: 1;
+    min-width: 250px;
+    border: 1px solid #000;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-text {
+    flex: 1;
+    min-width: 250px;
+  }
+
+  .hero-text h2 {
+    margin-top: 0;
+  }
+
+  button {
+    padding: 10px 20px;
+    border: 1px solid #000;
+    background: #fff;
+    cursor: pointer;
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    padding: 20px;
+  }
+
+  .card {
+    border: 1px solid #000;
+    padding: 15px;
+  }
+
+  .card h3 {
+    margin: 10px 0 5px;
+  }
+
+  .card ul {
+    margin: 0;
+    padding-left: 18px;
+  }
+
+  .icon-box {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #000;
+  }
+
+  @media (max-width: 700px) {
+    .cards {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>EDUPLANER</h1>
+  <div class="avatar"></div>
+</header>
+
+<section class="hero">
+  <div class="hero-img">Imagen</div>
+  <div class="hero-text">
+    <h2>Quienes somos?</h2>
+    <p>Somos una plataforma que ayuda a estudiantes a organizar sus tareas, proyectos y fechas de entrega en un solo lugar.</p>
+    <p>Nuestro objetivo es que planifiques tu semana de forma simple y clara.</p>
+    <button>Ver mas</button>
+  </div>
+</section>
+
+<section class="cards">
+
+  <div class="card">
+    <div class="icon-box"></div>
+    <h3>Tareas</h3>
+    <ul>
+      <li>Lista de tareas</li>
+      <li>Agregar tarea</li>
+      <li>Editar tarea</li>
+      <li>Actividades pendientes</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="icon-box"></div>
+    <h3>Calendario</h3>
+    <ul>
+      <li>Calendario academico</li>
+      <li>Eventos</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="icon-box"></div>
+    <h3>Recordatorios</h3>
+    <ul>
+      <li>Notificaciones</li>
+      <li>Configurar alertas</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="icon-box"></div>
+    <h3>Proyectos</h3>
+    <ul>
+      <li>Lista de proyectos</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="icon-box"></div>
+    <h3>Herramientas</h3>
+    <ul>
+      <li>Buscador</li>
+      <li>Otros</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="icon-box"></div>
+    <h3>Progreso</h3>
+    <ul>
+      <li>Estadisticas</li>
+      <li>Graficos</li>
+      <li>Historial</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="icon-box"></div>
+    <h3>Ayuda</h3>
+    <ul>
+      <li>Tutorial de uso</li>
+      <li>Mensajes de ayuda</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="icon-box"></div>
+    <h3>Configuracion</h3>
+    <ul>
+      <li>Cambiar perfil</li>
+      <li>Accesibilidad</li>
+      <li>Cambiar cuenta</li>
+      <li>Cerrar sesion</li>
+    </ul>
+  </div>
+
+</section>
+
+</body>
+</html>
