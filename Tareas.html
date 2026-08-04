@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tareas - EduPlaner</title>
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: #000;
+    background: #fff;
+  }
+
+  .page {
+    max-width: 700px;
+    margin: 0 auto;
+    border: 1px solid #000;
+    padding: 20px;
+  }
+
+  .topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+
+  .topbar a {
+    color: #000;
+    text-decoration: none;
+    font-size: 18px;
+  }
+
+  .topbar .icons span {
+    margin-left: 12px;
+    border: 1px solid #000;
+    padding: 4px 8px;
+    font-size: 12px;
+  }
+
+  .images {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .images div {
+    flex: 1;
+    border: 1px solid #000;
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .badge {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    border: 1px solid #000;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    background: #fff;
+  }
+
+  .actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 25px;
+  }
+
+  .actions button {
+    padding: 8px 16px;
+    border: 1px solid #000;
+    background: #fff;
+    cursor: pointer;
+    font-size: 13px;
+    border-radius: 4px;
+  }
+
+  .task-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .task {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 15px 0;
+    border-top: 1px solid #000;
+  }
+
+  .task:last-child {
+    border-bottom: 1px solid #000;
+  }
+
+  .task .icon {
+    width: 36px;
+    height: 36px;
+    border: 1px solid #000;
+    flex-shrink: 0;
+  }
+
+  .task h3 {
+    margin: 0 0 4px;
+    font-size: 15px;
+  }
+
+  .task p {
+    margin: 0;
+    font-size: 13px;
+    color: #333;
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <div class="topbar">
+    <a href="index.html">&#8592;</a>
+    <div class="icons">
+      <span>Editar</span>
+      <span>Adjuntar</span>
+      <span>...</span>
+    </div>
+  </div>
+
+  <div class="images">
+    <div>
+      <span class="badge">2</span>
+      Imagen 1
+    </div>
+    <div>
+      <span class="badge">2</span>
+      Imagen 2
+    </div>
+  </div>
+
+  <div class="actions">
+    <button>Anadir al calendario</button>
+    <button>Pendiente</button>
+    <button>Realizadas</button>
+  </div>
+
+  <div class="task-list">
+
+    <div class="task">
+      <div class="icon"></div>
+      <div>
+        <h3>Tarea2-Desarrollo Web</h3>
+        <p>Crear los user person en base a las encuestas</p>
+      </div>
+    </div>
+
+    <div class="task">
+      <div class="icon"></div>
+      <div>
+        <h3>Codigo de practica-Poo</h3>
+        <p>Realizar el codigo similar al que se vio en clase</p>
+      </div>
+    </div>
+
+    <div class="task">
+      <div class="icon"></div>
+      <div>
+        <h3>Evaluacion RDA1-Base de datos</h3>
+        <p>Repasar los temas vistos en las ultimas clases</p>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+</html>
