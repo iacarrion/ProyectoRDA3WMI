@@ -1,0 +1,47 @@
+// ==========================================================
+// Variables generadas a partir del UI Kit / tokens de Figma
+// ==========================================================
+
+:root {
+  --color-primary: #2457f5;
+  --color-text: #1d2433;
+  --color-muted: #667085;
+  --color-background: #f7f8fa;
+  --color-border: #d8dce5;
+
+  --font-primary: Arial, sans-serif;
+
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+
+  --radius-sm: 6px;
+  --radius-md: 12px;
+}
+
+// Variables SCSS (mapeadas a los custom properties de arriba)
+// Uso: $color-primary, $space-md, etc. dentro de los .scss
+$color-primary:    var(--color-primary);
+$color-text:        var(--color-text);
+$color-muted:        var(--color-muted);
+$color-background:  var(--color-background);
+$color-border:      var(--color-border);
+
+$font-primary: var(--font-primary);
+
+$space-sm: var(--space-sm);
+$space-md: var(--space-md);
+$space-lg: var(--space-lg);
+
+$radius-sm: var(--radius-sm);
+$radius-md: var(--radius-md);
+
+// -----------------------------------------------------------
+// Colores adicionales vistos en el UI Kit (botones verdes/rojos)
+// No estaban en tus variables :root originales -> ajusta si
+// ya tienes los hex definitivos.
+// -----------------------------------------------------------
+$color-success:       #2f9e44;
+$color-success-dark:  #1e6b2c;
+$color-danger:        #e03131;
+$color-danger-light:  #ffe3e3;
