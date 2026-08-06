@@ -3,7 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EduPlaner</title>
+<meta name="description" content="EduPlaner, plataforma para organizar tareas, proyectos y fechas de entrega academicas en un solo lugar.">
+<meta name="author" content="EduPlaner Team">
+<title>EduPlaner - Inicio</title>
 <style>
   body {
     margin: 0;
@@ -64,9 +66,10 @@
     border: 1px solid #000;
     background: #fff;
     cursor: pointer;
+    font-size: 14px;
   }
 
-  .cards {
+  nav.cards {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 15px;
@@ -76,15 +79,24 @@
   .card {
     border: 1px solid #000;
     padding: 15px;
+    color: #000;
+    text-decoration: none;
+    display: block;
+  }
+
+  .card:hover {
+    background: #f5f5f5;
   }
 
   .card h3 {
     margin: 10px 0 5px;
+    font-size: 16px;
   }
 
   .card ul {
     margin: 0;
     padding-left: 18px;
+    font-size: 13px;
   }
 
   .icon-box {
@@ -93,8 +105,16 @@
     border: 1px solid #000;
   }
 
+  footer {
+    border-top: 2px solid #000;
+    padding: 15px 20px;
+    font-size: 12px;
+    text-align: center;
+    color: #333;
+  }
+
   @media (max-width: 700px) {
-    .cards {
+    nav.cards {
       grid-template-columns: 1fr;
     }
   }
@@ -104,23 +124,23 @@
 
 <header>
   <h1>EDUPLANER</h1>
-  <div class="avatar"></div>
+  <div class="avatar" role="img" aria-label="Foto de perfil de usuario"></div>
 </header>
 
-<section class="hero">
-  <div class="hero-img">Imagen</div>
+<section class="hero" aria-labelledby="quienes-somos">
+  <div class="hero-img" role="img" aria-label="Imagen ilustrativa de EduPlaner">Imagen</div>
   <div class="hero-text">
-    <h2>Quienes somos?</h2>
+    <h2 id="quienes-somos">Quienes somos?</h2>
     <p>Somos una plataforma que ayuda a estudiantes a organizar sus tareas, proyectos y fechas de entrega en un solo lugar.</p>
     <p>Nuestro objetivo es que planifiques tu semana de forma simple y clara.</p>
-    <button>Ver mas</button>
+    <button type="button">Ver mas</button>
   </div>
 </section>
 
-<section class="cards">
+<nav class="cards" aria-label="Secciones principales de EduPlaner">
 
-  <div class="card">
-    <div class="icon-box"></div>
+  <a class="card" href="tareas.html">
+    <div class="icon-box" aria-hidden="true"></div>
     <h3>Tareas</h3>
     <ul>
       <li>Lista de tareas</li>
@@ -128,64 +148,64 @@
       <li>Editar tarea</li>
       <li>Actividades pendientes</li>
     </ul>
-  </div>
+  </a>
 
-  <div class="card">
-    <div class="icon-box"></div>
+  <a class="card" href="calendario.html">
+    <div class="icon-box" aria-hidden="true"></div>
     <h3>Calendario</h3>
     <ul>
       <li>Calendario academico</li>
       <li>Eventos</li>
     </ul>
-  </div>
+  </a>
 
-  <div class="card">
-    <div class="icon-box"></div>
+  <a class="card" href="recordatorios.html">
+    <div class="icon-box" aria-hidden="true"></div>
     <h3>Recordatorios</h3>
     <ul>
       <li>Notificaciones</li>
       <li>Configurar alertas</li>
     </ul>
-  </div>
+  </a>
 
-  <div class="card">
-    <div class="icon-box"></div>
+  <a class="card" href="proyectos.html">
+    <div class="icon-box" aria-hidden="true"></div>
     <h3>Proyectos</h3>
     <ul>
       <li>Lista de proyectos</li>
     </ul>
-  </div>
+  </a>
 
-  <div class="card">
-    <div class="icon-box"></div>
+  <a class="card" href="herramientas.html">
+    <div class="icon-box" aria-hidden="true"></div>
     <h3>Herramientas</h3>
     <ul>
       <li>Buscador</li>
       <li>Otros</li>
     </ul>
-  </div>
+  </a>
 
-  <div class="card">
-    <div class="icon-box"></div>
+  <a class="card" href="progreso.html">
+    <div class="icon-box" aria-hidden="true"></div>
     <h3>Progreso</h3>
     <ul>
       <li>Estadisticas</li>
       <li>Graficos</li>
       <li>Historial</li>
     </ul>
-  </div>
+  </a>
 
-  <div class="card">
-    <div class="icon-box"></div>
+  <a class="card" href="ayuda.html">
+    <div class="icon-box" aria-hidden="true"></div>
     <h3>Ayuda</h3>
     <ul>
       <li>Tutorial de uso</li>
       <li>Mensajes de ayuda</li>
     </ul>
-  </div>
+  </a>
 
-  <div class="card">
-    <div class="icon-box"></div>
+  <a class="card" href="configuracion.html">
+    <div class="icon-box" aria-hidden="true"></div>
     <h3>Configuracion</h3>
     <ul>
       <li>Cambiar perfil</li>
@@ -193,9 +213,13 @@
       <li>Cambiar cuenta</li>
       <li>Cerrar sesion</li>
     </ul>
-  </div>
+  </a>
 
-</section>
+</nav>
+
+<footer>
+  EduPlaner &mdash; Organiza tu vida academica
+</footer>
 
 </body>
 </html>
