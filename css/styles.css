@@ -1,7 +1,6 @@
 /* =========================
    PANTALLA PROYECTOS
 ========================= */
-
 .proyectos-header {
     background-color: #285c20;
     text-align: center;
@@ -187,3 +186,196 @@
     font-size: 12px;
     margin: 12px 0;
 }
+=======
+:root {
+  --color-primary: #2457f5;
+  --color-text: #1d2433;
+  --color-muted: #667085;
+  --color-background: #f7f8fa;
+  --color-border: #d8dce5;
+  --font-primary: Arial, sans-serif;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --radius-sm: 6px;
+  --radius-md: 12px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-primary);
+  color: var(--color-text);
+  background: var(--color-background);
+}
+
+a {
+  color: inherit;
+}
+
+header.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-md) var(--space-lg);
+  border-bottom: 1px solid var(--color-border);
+  background: #fff;
+}
+header.topbar h1 {
+  font-size: 1.25rem;
+  margin: 0;
+  letter-spacing: 0.02em;
+}
+header.topbar .avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+  align-items: center;
+  padding: var(--space-lg);
+}
+@media (max-width: 800px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+}
+.hero-img {
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  height: 220px;
+  background: var(--color-background);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-muted);
+}
+.hero-text h2 {
+  margin-top: 0;
+  font-size: 1.6rem;
+}
+.hero-text p {
+  color: var(--color-muted);
+  line-height: 1.6;
+  margin-bottom: var(--space-sm);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 0.7rem 1.4rem;
+  font-family: var(--font-primary);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: filter 0.15s ease;
+}
+.btn:hover {
+  filter: brightness(0.92);
+}
+.btn--primary {
+  background: var(--color-primary);
+  color: #fff;
+}
+.btn--success {
+  background: #2f9e44;
+  color: #fff;
+}
+.btn--danger {
+  background: #e03131;
+  color: #fff;
+}
+.btn--outline {
+  background: transparent;
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-sm);
+  padding: 0 var(--space-lg) var(--space-lg);
+}
+@media (max-width: 800px) {
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 520px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-sm);
+  text-decoration: none;
+  color: var(--color-text);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+.card:hover {
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+.card .icon-box {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+}
+.card h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+.card ul {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--color-muted);
+  font-size: 0.85rem;
+}
+.card ul li {
+  margin-bottom: 2px;
+}
+
+.input {
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  font-family: var(--font-primary);
+  font-size: 0.9rem;
+  color: var(--color-text);
+  background: #fff;
+}
+.input:focus {
+  outline: none;
+  border-color: #2f9e44;
+}
+.input--error {
+  border-color: #e03131;
+  background: #ffe3e3;
+}
+>>>>>>> 2b6380b71e73305dc8be8a8c03b42d446e8afa41
