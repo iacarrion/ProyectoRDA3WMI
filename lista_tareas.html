@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduPlaner - Lista de Tareas</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body.tasks-body {
+      margin: 0;
+      padding: 40px 20px;
+      background-color: #e2e2e8;
+      font-family: 'Segoe UI', system-ui, -apple-system, Roboto, sans-serif;
+      color: #333333;
+    }
+
+    .main-layout {
+      display: flex;
+      gap: 35px;
+      align-items: flex-start;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* Contenedor Principal (Tarjeta / Modal) */
+    .task-modal {
+      flex: 1;
+      background-color: #ffffff;
+      border: 10px solid #4a3862;
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+    }
+
+    /* Encabezado */
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+
+    .icon-btn {
+      background: none;
+      border: none;
+      font-size: 1.2rem;
+      color: #4a3862;
+      cursor: pointer;
+      padding: 4px 8px;
+      transition: opacity 0.2s;
+    }
+
+    .icon-btn:hover {
+      opacity: 0.7;
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 12px;
+    }
+
+    /* Banner Superior */
+    .banner-section {
+      background-color: #f1edfa;
+      border-radius: 16px;
+      padding: 16px;
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      margin-bottom: 22px;
+    }
+
+    .banner-card {
+      flex: 1;
+      max-width: 340px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+      background-color: #ffffff;
+    }
+
+    .banner-img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Botones de Filtro */
+    .action-buttons {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 25px;
+    }
+
+    .btn {
+      border: none;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      letter-spacing: 0.3px;
+    }
+
+    .btn-calendar {
+      background-color: #f0edf5;
+      color: #3b3a42;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-pending {
+      background-color: #a3e635;
+      color: #ffffff;
+    }
+
+    .btn-completed {
+      background-color: #94e31b;
+      color: #ffffff;
+    }
+
+    /* Lista de Tareas */
+    .task-list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .task-card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 14px 0;
+      border-bottom: 1px solid #e8e8ee;
+    }
+
+    .task-card:last-child {
+      border-bottom: none;
+    }
+
+    .task-icon-placeholder {
+      width: 44px;
+      height: 44px;
+      background-color: #f0ecf6;
+      border-radius: 12px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #a09aa9;
+    }
+
+    .task-title {
+      margin: 0 0 4px 0;
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: #2b2b2b;
+    }
+
+    .task-desc {
+      margin: 0;
+      font-size: 0.83rem;
+      color: #71717a;
+    }
+
+    /* Menú Lateral Derecho */
+    .right-menu {
+      width: 240px;
+      padding-top: 15px;
+    }
+
+    .side-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: #4b5563;
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: 0.5px;
+      transition: color 0.2s;
+    }
+
+    .nav-item:hover {
+      color: #111827;
+    }
+
+    .nav-icon {
+      margin-right: 8px;
+      font-size: 1rem;
+    }
+
+    .nav-text {
+      flex: 1;
+    }
+
+    .nav-shortcut {
+      font-size: 0.75rem;
+      color: #9ca3af;
+      display: flex;
+      align-items: center;
+      gap: 3px;
+    }
+  </style>
+</head>
+<body class="tasks-body">
+
+  <div class="main-layout">
+    
+    <!-- Contenedor Principal (Tarjeta / Modal) -->
+    <div class="task-modal">
+      
+      <!-- Header de la tarjeta -->
+      <header class="modal-header">
+        <button class="icon-btn back-btn" onclick="window.history.back()">&#8592;</button>
+        <div class="header-actions">
+          <button class="icon-btn" title="Editar">&#9998;</button>
+          <button class="icon-btn" title="Adjuntar">&#128206;</button>
+          <button class="icon-btn" title="Opciones">&#8942;</button>
+        </div>
+      </header>
+
+      <!-- Banner con Agendas -->
+        <section class="banner-section">
+        <div class="banner-card">
+            <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=500&q=80" alt="Agenda 1" class="banner-img">
+        </div>
+        <div class="banner-card">
+            <img src="https://images.unsplash.com/photo-1517842645767-c639042777db?w=500&q=80" alt="Agenda 2" class="banner-img">
+        </div>
+        </section>
+
+      <!-- Botones de Acción / Filtros -->
+      <section class="action-buttons">
+        <button class="btn btn-calendar">
+          <span>&#128197;</span> AÑADIR AL CALENDARIO
+        </button>
+        <button class="btn btn-pending">&#10004; PENDIENTE</button>
+        <button class="btn btn-completed">REALIZADAS</button>
+      </section>
+
+      <!-- Lista de Tareas -->
+      <section class="task-list">
+        
+        <!-- Tarea 1 -->
+        <article class="task-card">
+          <div class="task-icon-placeholder">
+            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </div>
+          <div class="task-info">
+            <h3 class="task-title">Tarea2-Desarrollo Web</h3>
+            <p class="task-desc">Crear los user person en base a las encuestas</p>
+          </div>
+        </article>
+
+        <!-- Tarea 2 -->
+        <article class="task-card">
+          <div class="task-icon-placeholder">
+            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </div>
+          <div class="task-info">
+            <h3 class="task-title">Codigo de practica-Poo</h3>
+            <p class="task-desc">Realizar el codigo similar al que se vio en clase</p>
+          </div>
+        </article>
+
+        <!-- Tarea 3 -->
+        <article class="task-card">
+          <div class="task-icon-placeholder">
+            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </div>
+          <div class="task-info">
+            <h3 class="task-title">Evaluacion RDA1-Base de datos</h3>
+            <p class="task-desc">Repasar consultas y estructura relacional</p>
+          </div>
+        </article>
+
+      </section>
+
+    </div>
+
+    <!-- Menú Lateral Derecha -->
+    <aside class="right-menu">
+      <nav class="side-nav">
+        <a href="lista_tareas.html" class="nav-item">
+          <span class="nav-icon">&#10022;</span>
+          <span class="nav-text">LISTA DE TAREAS</span>
+          <span class="nav-shortcut">&#8984;C &rsaquo;</span>
+        </a>
+        <a href="herramientas_escritorio.html" class="nav-item">
+          <span class="nav-icon">&#10022;</span>
+          <span class="nav-text">AGREGAR TAREAS</span>
+          <span class="nav-shortcut">&#8984;C &rsaquo;</span>
+        </a>
+        <a href="calendario_escritorio.html" class="nav-item">
+          <span class="nav-icon">&#10022;</span>
+          <span class="nav-text">ACTIVIDADES ATRASADAS</span>
+          <span class="nav-shortcut">&#8984;C &rsaquo;</span>
+        </a>
+      </nav>
+    </aside>
+
+  </div>
+
+</body>
+</html>
