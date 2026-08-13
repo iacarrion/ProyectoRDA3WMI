@@ -3,92 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <title>Proyectos</title>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
-<body>
 
-    <!-- Encabezado -->
-    <header>
+<body class="pagina-escritorio">
+
+    <header class="proyectos-header">
 
         <h1>PROYECTOS</h1>
 
-        <button>MI PROYECTO</button>
-        <button>COMENTAR</button>
+        <div class="proyectos-botones">
+            <button>MI PROYECTO</button>
+            <button>COMENTAR</button>
+        </div>
 
-        <br><br>
-
-        <img src="img/proyecto-principal.jpg" alt="Proyecto Principal" width="300">
+        <img 
+            class="proyectos-imagen-principal"
+            src="img/proyecto-principal.jpg"
+            alt="Proyecto Principal"
+        >
 
     </header>
 
-    <hr>
-
-    <!-- Lista de proyectos -->
-    <main>
+    <main class="proyectos-contenido">
 
         <h2>PROYECTOS</h2>
 
-        <!-- Proyecto 1 -->
-        <section>
+        <div class="proyectos-grid">
 
-            <img src="img/programacion.jpg" alt="Programación" width="200">
+            <section class="proyecto-card">
+                <img src="img/programacion.jpg" alt="Programación">
+                <h3>PROGRAMACIÓN</h3>
+                <p>Sistema de gestión de tareas personales.</p>
+            </section>
 
-            <h3>PROGRAMACIÓN</h3>
+            <section class="proyecto-card">
+                <img src="img/basedatos.jpg" alt="Base de Datos">
+                <h3>BASE DE DATOS</h3>
+                <p>Sistema de administración de una biblioteca.</p>
+            </section>
 
-            <p>Sistema de gestión de tareas personales.</p>
+            <section class="proyecto-card">
+                <img src="img/redes.jpg" alt="Redes">
+                <h3>REDES</h3>
+                <p>Desarrollar una red completa con servidores.</p>
+            </section>
 
-        </section>
+            <section class="proyecto-card">
+                <img src="img/integrador.jpg" alt="Integrador">
+                <h3>INTEGRADOR</h3>
+                <p>Sistema de control de parqueaderos universitarios.</p>
+            </section>
 
-        <br><br>
+            <section class="proyecto-card">
+                <img src="img/web.jpg" alt="Desarrollo Web">
+                <h3>DESARROLLO WEB</h3>
+                <p>Sitio web para organizar eventos universitarios.</p>
+            </section>
 
-        <!-- Proyecto 2 -->
-        <section>
-
-            <img src="img/basedatos.jpg" alt="Base de Datos" width="200">
-
-            <h3>BASE DE DATOS</h3>
-
-            <p>Sistema de administración de una biblioteca.</p>
-
-        </section>
-
-        <br><br>
-
-        <!-- Proyecto 3 -->
-        <section>
-
-            <img src="img/redes.jpg" alt="Redes" width="200">
-
-            <h3>REDES</h3>
-
-            <p>Desarrollar una red completa con servidores.</p>
-
-        </section>
-
-        <br><br>
-
-        <!-- Proyecto 4 -->
-        <section>
-
-            <img src="img/integrador.jpg" alt="Integrador" width="200">
-
-            <h3>INTEGRADOR</h3>
-
-            <p>Sistema de control de parqueaderos universitarios.</p>
-
-        </section>
-
-        <br><br>
-
-        <!-- Proyecto 5 -->
-        <section>
-
-            <img src="img/web.jpg" alt="Desarrollo Web" width="200">
-
-            <h3>DESARROLLO WEB</h3>
-
-            <p>Sitio web para organizar eventos universitarios.</p>
-
-        </section>
+        </div>
 
     </main>
 
