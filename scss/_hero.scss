@@ -1,0 +1,76 @@
+@use 'variables' as *;
+
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $space-lg;
+  align-items: center;
+  padding: $space-lg;
+
+  @media (max-width: 800px) {
+    grid-template-columns: 1fr;
+  }
+
+  &-img {
+    border-radius: $radius-md;
+    border: 1px solid $color-border;
+    height: 220px;
+    background: $color-background;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $color-muted;
+  }
+
+  &-text {
+    h2 {
+      margin-top: 0;
+      font-size: 1.6rem;
+    }
+
+    p {
+      color: $color-muted;
+      line-height: 1.6;
+      margin-bottom: $space-sm;
+    }
+  }
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  border-radius: $radius-sm;
+  padding: 0.7rem 1.4rem;
+  font-family: $font-primary;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: filter 0.15s ease;
+
+  &:hover {
+    filter: brightness(0.92);
+  }
+
+  &--primary {
+    background: $color-primary;
+    color: #fff;
+  }
+
+  &--success {
+    background: $color-success;
+    color: #fff;
+  }
+
+  &--danger {
+    background: $color-danger;
+    color: #fff;
+  }
+
+  &--outline {
+    background: transparent;
+    border: 1px solid $color-border;
+    color: $color-text;
+  }
+}
