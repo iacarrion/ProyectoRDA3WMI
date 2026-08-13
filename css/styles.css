@@ -1,0 +1,104 @@
+/* =========================
+   PANTALLA PROYECTOS
+========================= */
+
+.proyectos-header {
+    background-color: #285c20;
+    text-align: center;
+    padding: 50px 20px 20px;
+}
+
+.proyectos-header h1 {
+    color: #bdbdbd;
+    font-size: 40px;
+    margin: 0 0 20px;
+}
+
+.proyectos-botones button {
+    background-color: #39b900;
+    color: white;
+    border: none;
+    padding: 7px 10px;
+    margin: 0 3px;
+    border-radius: 4px;
+    font-size: 11px;
+}
+
+.proyectos-imagen-principal {
+    display: block;
+    width: 180px;
+    height: 115px;
+    object-fit: cover;
+    border-radius: 60%;
+    margin: 18px auto 0;
+}
+
+.proyectos-contenido {
+    padding: 35px;
+}
+
+.proyectos-contenido h2 {
+    font-size: 16px;
+    margin-bottom: 35px;
+}
+
+.proyectos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px 25px;
+}
+
+.proyecto-card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 12px;
+    background-color: white;
+}
+
+.proyecto-card img {
+    width: 100%;
+    height: 105px;
+    object-fit: cover;
+}
+
+.proyecto-card h3 {
+    font-size: 14px;
+    margin: 12px 0 5px;
+}
+
+.proyecto-card p {
+    font-size: 11px;
+    color: #666;
+    margin: 0;
+}
+
+.proyecto-horizontal {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 5px;
+}
+
+.proyecto-horizontal img {
+    width: 100px;
+    height: 105px;
+}
+
+.proyecto-horizontal h3 {
+    margin: 0 0 7px;
+}
+
+
+/* Adaptación para escritorio */
+@media (min-width: 1000px) {
+
+    .proyectos-header {
+        min-height: 240px;
+    }
+
+    .proyectos-contenido {
+        max-width: 1100px;
+        margin: auto;
+    }
+
+}
