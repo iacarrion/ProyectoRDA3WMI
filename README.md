@@ -53,3 +53,21 @@ Pantalla de calendario académico de EduPlaner, que incluye: encabezado con logo
 
 - Isaac Carrion
 - Wilmer Calapaqui
+---
+
+## Módulo: Lista de Tareas (Isaac Carrion)
+
+Maquetación y diseño visual de la sección de gestión de tareas.
+
+### Archivos
+* `lista_tareas.html`
+
+### Funcionalidades maquetadas
+* **Panel multimedia superior:** Tarjetas visuales promocionales e informativas.
+* **Filtros de estado:** Botones para clasificar actividades (`Añadir al calendario`, `Pendiente`, `Realizadas`).
+* **Listado por asignaturas:** Tarjetas organizadas con iconos, títulos y descripciones de las materias.
+* **Navegación lateral:** Enlaces de acceso rápido a funciones del panel.
+
+### Vista previa local
+```text
+http://localhost:5500/lista_tareas.html
