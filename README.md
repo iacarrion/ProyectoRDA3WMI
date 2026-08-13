@@ -116,10 +116,10 @@ git push origin <tu-rama>
 
 ## Equipo
 
-- Integrante 1
-- Integrante 2
-- Integrante 3
-- Integrante 4
+- Wilmer Calapaqui
+- Isaac Carrion
+- Marco Luna
+
 
 ## Licencia
 
