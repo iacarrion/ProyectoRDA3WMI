@@ -100,5 +100,23 @@
 
     </footer>
 
+<script>
+  document.querySelectorAll('.accordion-header').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      const item = btn.closest('.accordion-item');
+      const isOpen = item.classList.contains('open');
+
+      document.querySelectorAll('.accordion-item').forEach(function (el) {
+        el.classList.remove('open');
+        el.querySelector('.chevron').textContent = 'v';
+      });
+
+      if (!isOpen) {
+        item.classList.add('open');
+        btn.querySelector('.chevron').textContent = '^';
+      }
+    });
+  });
+</script>
 </body>
 </html>
