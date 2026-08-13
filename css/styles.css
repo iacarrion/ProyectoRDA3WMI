@@ -515,3 +515,46 @@ header.topbar .avatar {
         grid-template-columns: 1fr;
     }
 }
+/* ===== Header responsivo (flexbox + media query) ===== */
+header.topbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  padding: var(--space-md) var(--space-lg);
+  border-bottom: 1px solid var(--color-border);
+  background: #fff;
+}
+
+header.topbar h1 {
+  font-size: 1.25rem;
+  margin: 0;
+  letter-spacing: 0.02em;
+  flex-shrink: 0;
+}
+
+header.topbar .avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+@media (max-width: 480px) {
+  header.topbar {
+    padding: var(--space-sm) var(--space-md);
+  }
+  header.topbar h1 {
+    font-size: 1.05rem;
+  }
+  header.topbar .avatar {
+    width: 34px;
+    height: 34px;
+  }
+}
