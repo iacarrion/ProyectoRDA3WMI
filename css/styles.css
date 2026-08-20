@@ -626,4 +626,89 @@ header.topbar .avatar {
   text-align: right;
 }
 
+/* ===== Tareas responsivo ===== */
+.page {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: var(--space-md);
+}
+
+.images {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.images div {
+  flex: 1 1 140px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.task {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+@media (max-width: 480px) {
+  .page {
+    padding: var(--space-sm);
+  }
+  .actions button {
+    flex: 1 1 100%;
+  }
+}
+
+/* ===== Herramientas responsivo ===== */
+.layout {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.sidebar {
+  flex: 1 1 260px;
+}
+
+.content {
+  flex: 3 1 400px;
+}
+
+@media (max-width: 700px) {
+  .layout {
+    flex-direction: column;
+  }
+  .sidebar {
+    border-right: none;
+    border-bottom: 1px solid var(--color-border);
+  }
+}
+
+/* ===== Configuracion responsivo ===== */
+.users {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+.user {
+  flex: 1 1 70px;
+}
+
+.option-list {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 480px) {
+  .users {
+    justify-content: center;
+  }
+  .panel {
+    padding: var(--space-sm);
+  }
+}
 
