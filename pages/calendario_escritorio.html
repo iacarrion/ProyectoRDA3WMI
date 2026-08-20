@@ -1,105 +1,128 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>EduPlaner</title>
-    <link rel="stylesheet" href="../css/styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Calendario academico de EduPlaner, con examenes y materias organizadas.">
+<meta name="author" content="EduPlaner Team">
+<title>EduPlaner - Calendario</title>
+<link rel="stylesheet" href="../css/styles.css">
 </head>
-<body>
+<body class="calendar-page">
 
-    <!-- Encabezado -->
-    <header>
-        <h1>EDUPLANER</h1>
+<header class="topbar">
+  <h1>EDUPLANER</h1>
+  <div class="avatar" role="img" aria-label="Foto de perfil de usuario"></div>
+</header>
 
-        <div>
-            <img src="img/avatar.png" alt="Perfil" width="80">
-        </div>
-    </header>
+<section class="calendar-widget" aria-label="Calendario">
+  <div class="calendar-nav">
+    <button type="button" aria-label="Mes anterior">&lsaquo;</button>
+    <select aria-label="Mes">
+      <option>Sep</option>
+    </select>
+    <select aria-label="Año">
+      <option>2025</option>
+    </select>
+    <button type="button" aria-label="Mes siguiente">&rsaquo;</button>
+  </div>
 
-    <hr>
+  <table class="calendar-grid">
+    <thead>
+      <tr>
+        <th>Su</th><th>Mo</th><th>Tu</th><th>We</th><th>Th</th><th>Fr</th><th>Sa</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td></td><td></td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td></tr>
+      <tr><td>6</td><td>7</td><td>8</td><td class="today">9</td><td>10</td><td>11</td><td class="selected">12</td></tr>
+      <tr><td>13</td><td>14</td><td>15</td><td>16</td><td>17</td><td>18</td><td>19</td></tr>
+      <tr><td>20</td><td>21</td><td>22</td><td>23</td><td>24</td><td>25</td><td>26</td></tr>
+      <tr><td>27</td><td>28</td><td>29</td><td>30</td><td class="muted">1</td><td class="muted">2</td><td class="muted">3</td></tr>
+    </tbody>
+  </table>
+</section>
 
-    <!-- Calendario -->
-    <section>
-        <h2>Calendario</h2>
+<section class="accordion" aria-label="Materias">
 
-        <input type="month">
-    </section>
+  <div class="accordion-item open">
+    <button type="button" class="accordion-header">
+      CALENDARIO ACADEMICO
+      <span class="chevron">^</span>
+    </button>
+  </div>
 
-    <br>
+  <div class="accordion-item">
+    <button type="button" class="accordion-header">
+      Matematica
+      <span class="chevron">v</span>
+    </button>
+  </div>
 
-    <!-- Calendario Académico -->
-    <section>
+  <div class="accordion-item">
+    <button type="button" class="accordion-header">
+      Estructura de datos
+      <span class="chevron">v</span>
+    </button>
+  </div>
 
-        <details open>
-            <summary>CALENDARIO ACADÉMICO</summary>
-            <p>Fechas importantes del semestre.</p>
-        </details>
+  <div class="accordion-item">
+    <button type="button" class="accordion-header">
+      Herramientas digitales
+      <span class="chevron">v</span>
+    </button>
+  </div>
 
-        <br>
+  <div class="accordion-item">
+    <button type="button" class="accordion-header">
+      Redes
+      <span class="chevron">v</span>
+    </button>
+  </div>
 
-        <details>
-            <summary>Matemática</summary>
-            <p>Tareas, exámenes y actividades.</p>
-        </details>
+</section>
 
-        <br>
+<section class="exam-list" aria-label="Examenes">
+  <h2>Examenes</h2>
 
-        <details>
-            <summary>Estructura de Datos</summary>
-            <p>Tareas, exámenes y actividades.</p>
-        </details>
+  <ul>
+    <li>
+      <span class="exam-avatar">D</span>
+      <span class="exam-name">Desarrollo</span>
+      <input type="checkbox" checked aria-label="Desarrollo completado">
+    </li>
+    <li>
+      <span class="exam-avatar">P</span>
+      <span class="exam-name">Programacion</span>
+      <input type="checkbox" checked aria-label="Programacion completado">
+    </li>
+    <li>
+      <span class="exam-avatar">B</span>
+      <span class="exam-name">Base de datos</span>
+      <input type="checkbox" checked aria-label="Base de datos completado">
+    </li>
+    <li>
+      <span class="exam-avatar">R</span>
+      <span class="exam-name">Redes</span>
+      <input type="checkbox" checked aria-label="Redes completado">
+    </li>
+    <li>
+      <span class="exam-avatar">S</span>
+      <span class="exam-name">Sistema Operativo</span>
+      <input type="checkbox" checked aria-label="Sistema Operativo completado">
+    </li>
+    <li>
+      <span class="exam-avatar">IA</span>
+      <span class="exam-name">IA</span>
+      <input type="checkbox" checked aria-label="IA completado">
+    </li>
+  </ul>
+</section>
 
-        <br>
-
-        <details>
-            <summary>Herramientas Digitales</summary>
-            <p>Tareas, exámenes y actividades.</p>
-        </details>
-
-        <br>
-
-        <details>
-            <summary>Redes</summary>
-            <p>Tareas, exámenes y actividades.</p>
-        </details>
-
-    </section>
-
-    <br><br>
-
-    <!-- Exámenes -->
-    <section>
-
-        <h2>Exámenes</h2>
-
-        <form>
-
-            <input type="checkbox"> Desarrollo<br><br>
-
-            <input type="checkbox"> Programación<br><br>
-
-            <input type="checkbox"> Base de Datos<br><br>
-
-            <input type="checkbox"> Redes<br><br>
-
-            <input type="checkbox"> Sistema Operativo<br><br>
-
-            <input type="checkbox"> IA<br><br>
-
-        </form>
-
-    </section>
-
-    <br><br>
-
-    <!-- Botones -->
-    <footer>
-
-        <button>REGRESAR AL INICIO</button>
-
-        <button>MIS PROYECTOS</button>
-
-    </footer>
+<footer class="calendar-actions">
+  <a href="../index.html" class="btn btn--outline">&#9654; Regresar al inicio</a>
+  <a href="proyectos_escritorio.html" class="btn btn--outline">&#9654; Mis proyectos</a>
+</footer>
 
 </body>
 </html>
