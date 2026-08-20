@@ -1420,3 +1420,187 @@ body.inicio-page .topbar {
 body.inicio-page .topbar h1 {
   color: #fff;
 }
+
+/* ===== Pantalla Configuracion (tema UI Kit) ===== */
+.page {
+  background: #fff !important;
+  border-color: var(--color-border) !important;
+}
+.topbar {
+  border-color: var(--color-border) !important;
+}
+.page-title {
+  color: var(--color-text) !important;
+  border-color: var(--color-border) !important;
+}
+.panel h2 {
+  color: var(--color-muted) !important;
+}
+.avatar-circle {
+  border-color: var(--color-primary) !important;
+  color: var(--color-primary) !important;
+}
+.option-list {
+  border-color: var(--color-border) !important;
+}
+.option {
+  color: var(--color-text) !important;
+  border-color: var(--color-border) !important;
+}
+.option:hover {
+  background: var(--color-background);
+}
+
+/* ===== Fondo de pantalla Configuracion ===== */
+body:has(.page) {
+  background: #d9f2d9;
+  min-height: 100vh;
+  margin: 0;
+  padding: var(--space-lg) 0;
+}
+
+/* ===== Fondo de pantalla Configuracion ===== */
+.config-page {
+  background: #d9f2d9;
+  min-height: 100vh;
+  padding: var(--space-lg) 0;
+}
+
+/* ===== Boton agregar usuario en Configuracion ===== */
+.add-user-circle {
+  border-style: dashed !important;
+  color: var(--color-primary) !important;
+  font-size: 1.4rem !important;
+  cursor: pointer;
+}
+.add-user {
+  cursor: pointer;
+}
+.add-user:hover .add-user-circle {
+  background: var(--color-background);
+}
+
+/* ===== Pantalla Tareas (tema Figma - marco morado) ===== */
+.tareas-page {
+  background: #fff;
+}
+.tareas-card {
+  max-width: 720px;
+  margin: 24px auto;
+  border: 2px solid #4c2a6b;
+  border-radius: 20px;
+  padding: 20px;
+  background: #fff;
+}
+.tareas-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+.tareas-topbar a {
+  color: var(--color-text);
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+.tareas-topbar .tareas-icons {
+  display: flex;
+  gap: 14px;
+  color: var(--color-text);
+}
+.tareas-images {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  background: #e9e4f5;
+  border-radius: 16px;
+  padding: 12px;
+  margin-bottom: 20px;
+}
+.tareas-images div {
+  flex: 1 1 240px;
+  height: 160px;
+  border-radius: 12px;
+  background-size: cover;
+  background-position: center;
+  background-color: #d8d2ec;
+}
+.tareas-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.tareas-actions button {
+  border: none;
+  border-radius: 999px;
+  padding: 10px 18px;
+  font-family: var(--font-primary);
+  font-weight: 600;
+  font-size: 0.82rem;
+  cursor: pointer;
+}
+.tareas-actions .btn-calendar {
+  background: #f2eefb;
+  color: #4c2a6b;
+}
+.tareas-actions .btn-pendiente,
+.tareas-actions .btn-realizadas {
+  background: #7ed957;
+  color: #1b3a12;
+}
+.tareas-list {
+  display: flex;
+  flex-direction: column;
+}
+.tareas-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+.tareas-item .icon-box {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  flex-shrink: 0;
+}
+.tareas-item h3 {
+  margin: 0 0 4px;
+  font-size: 0.95rem;
+  color: var(--color-text);
+}
+.tareas-item p {
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--color-muted);
+}
+@media (max-width: 500px) {
+  .tareas-card {
+    margin: 12px;
+    padding: 14px;
+  }
+  .tareas-actions button {
+    flex: 1 1 100%;
+  }
+}
+
+/* ===== Fondo verde para pantalla Tareas ===== */
+.tareas-page {
+  background: #d9f2d9 !important;
+}
+
+/* ===== Fondo verde para pantalla Herramientas ===== */
+.herramientas-page {
+  background: #d9f2d9 !important;
+}
+
+/* ===== Fondo verde en el layout de Herramientas ===== */
+.layout {
+  background: #d9f2d9 !important;
+  border: none !important;
+}

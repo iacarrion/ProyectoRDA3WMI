@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tareas - EduPlaner</title>
+<link rel="stylesheet" href="../css/styles.css">
 <style>
   body {
     margin: 0;
@@ -123,62 +124,52 @@
   }
 </style>
 </head>
-<body>
+<body class="tareas-page">
 
-<div class="page">
+<div class="tareas-card">
 
-  <div class="topbar">
-    <a href="index.html">&#8592;</a>
-    <div class="icons">
-      <span>Editar</span>
-      <span>Adjuntar</span>
-      <span>...</span>
+  <div class="tareas-topbar">
+    <a href="../index.html">&larr;</a>
+    <div class="tareas-icons">
+      <span>&#9998;</span>
+      <span>&#128206;</span>
+      <span>&#8942;</span>
     </div>
   </div>
 
-  <div class="images">
-    <div>
-      <span class="badge">2</span>
-      Imagen 1
-    </div>
-    <div>
-      <span class="badge">2</span>
-      Imagen 2
-    </div>
+  <div class="tareas-images">
+    <div style="background-image:url('https://images.unsplash.com/photo-1509266272358-7701da638078?w=400')"></div>
+    <div style="background-image:url('https://images.unsplash.com/photo-1517842645767-c639042777db?w=400')"></div>
   </div>
 
-  <div class="actions">
-    <button>Anadir al calendario</button>
-    <button>Pendiente</button>
-    <button>Realizadas</button>
+  <div class="tareas-actions">
+    <button class="btn-calendar">&#128197; Anadir al calendario</button>
+    <button class="btn-pendiente">&#10003; Pendiente</button>
+    <button class="btn-realizadas">Realizadas</button>
   </div>
 
-  <div class="task-list">
-
-    <div class="task">
-      <div class="icon"></div>
+  <div class="tareas-list">
+    <div class="tareas-item">
+      <div class="icon-box"></div>
       <div>
         <h3>Tarea2-Desarrollo Web</h3>
         <p>Crear los user person en base a las encuestas</p>
       </div>
     </div>
-
-    <div class="task">
-      <div class="icon"></div>
+    <div class="tareas-item">
+      <div class="icon-box"></div>
       <div>
         <h3>Codigo de practica-Poo</h3>
         <p>Realizar el codigo similar al que se vio en clase</p>
       </div>
     </div>
-
-    <div class="task">
-      <div class="icon"></div>
+    <div class="tareas-item">
+      <div class="icon-box"></div>
       <div>
         <h3>Evaluacion RDA1-Base de datos</h3>
-        <p>Repasar los temas vistos en las ultimas clases</p>
+        <p>Repasar consultas y estructura relacional</p>
       </div>
     </div>
-
   </div>
 
 </div>
