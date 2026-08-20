@@ -194,6 +194,7 @@ header.topbar .avatar {
   background: #ffe3e3;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 * {
   box-sizing: border-box;
 }
@@ -400,6 +401,57 @@ body.tasks-body {
   gap: 3px;
 =======
 
+=======
+.proyectos-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+/* ===== Header responsivo (flexbox + media query) ===== */
+header.topbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  padding: var(--space-md) var(--space-lg);
+  border-bottom: 1px solid var(--color-border);
+  background: #fff;
+}
+
+header.topbar h1 {
+  font-size: 1.25rem;
+  margin: 0;
+  letter-spacing: 0.02em;
+  flex-shrink: 0;
+}
+
+header.topbar .avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+@media (max-width: 480px) {
+  header.topbar {
+    padding: var(--space-sm) var(--space-md);
+  }
+  header.topbar h1 {
+    font-size: 1.05rem;
+  }
+  header.topbar .avatar {
+    width: 34px;
+    height: 34px;
+  }
+}
+
+>>>>>>> 68100a23d07d8861b4bf623b344ad5aa3e848dd4
 /* ===== Alertas / Registro ===== */
 .alert {
   display: flex;
@@ -782,5 +834,147 @@ body.tasks-body {
   color: var(--color-text);
   width: 32px;
   text-align: right;
+<<<<<<< HEAD
 >>>>>>> cae95acd5c1d437d1c838ee4aedc6a6cee7d5d88
+}
+=======
+}
+
+/* ===== Tareas responsivo ===== */
+.page {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: var(--space-md);
+}
+
+.images {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.images div {
+  flex: 1 1 140px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.task {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+@media (max-width: 480px) {
+  .page {
+    padding: var(--space-sm);
+  }
+  .actions button {
+    flex: 1 1 100%;
+  }
+}
+
+/* ===== Herramientas responsivo ===== */
+.layout {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.sidebar {
+  flex: 1 1 260px;
+}
+
+.content {
+  flex: 3 1 400px;
+}
+
+@media (max-width: 700px) {
+  .layout {
+    flex-direction: column;
+  }
+  .sidebar {
+    border-right: none;
+    border-bottom: 1px solid var(--color-border);
+  }
+}
+
+/* ===== Configuracion responsivo ===== */
+.users {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+.user {
+  flex: 1 1 70px;
+}
+
+.option-list {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 480px) {
+  .users {
+    justify-content: center;
+  }
+  .panel {
+    padding: var(--space-sm);
+  }
+}
+
+>>>>>>> 68100a23d07d8861b4bf623b344ad5aa3e848dd4
+
+/* ===== Proyectos responsivo ===== */
+.proyectos-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+}
+
+.proyectos-botones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.proyectos-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+@media (max-width: 800px) {
+  .proyectos-grid {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .proyectos-botones button {
+    flex: 1 1 100%;
+  }
+}
+
+/* ===== Ayuda responsivo ===== */
+.ayuda-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  padding: var(--space-lg);
+}
+
+.ayuda-item {
+  flex: 1 1 260px;
+}
+
+@media (max-width: 600px) {
+  .ayuda-container {
+    padding: var(--space-md);
+  }
 }
