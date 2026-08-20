@@ -1374,3 +1374,49 @@ header.topbar .avatar {
 .content h1 {
   color: var(--color-text) !important;
 }
+
+/* ===== Proyectos: ajustes responsivos ===== */
+.proyectos-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+}
+.proyectos-botones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+@media (max-width: 900px) {
+  .proyectos-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+@media (max-width: 560px) {
+  .proyectos-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .proyectos-contenido {
+    padding: var(--space-md) !important;
+  }
+  .proyectos-header h1 {
+    font-size: 28px !important;
+  }
+  .proyectos-botones button {
+    flex: 1 1 100%;
+  }
+}
+
+/* ===== Fondo de la pantalla de Inicio ===== */
+body.inicio-page {
+  background: #d9f2d9;
+}
+body.inicio-page .topbar {
+  background: #1f4d2a;
+  border-bottom: none;
+}
+body.inicio-page .topbar h1 {
+  color: #fff;
+}
