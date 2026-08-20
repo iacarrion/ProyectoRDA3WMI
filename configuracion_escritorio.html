@@ -20,11 +20,13 @@
 
   .topbar {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     padding: 12px 15px;
     border-bottom: 1px solid #000;
     font-size: 13px;
+    gap: 8px;
   }
 
   .topbar a {
@@ -89,11 +91,14 @@
   }
 
   .option-list {
+    display: flex;
+    flex-direction: column;
     border-top: 1px solid #000;
   }
 
   .option {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     padding: 12px 5px;
@@ -109,6 +114,43 @@
 
   .gap {
     height: 15px;
+  }
+
+  /* ===== Responsivo (flexbox + media query) ===== */
+  @media (max-width: 600px) {
+    .page {
+      border-left: none;
+      border-right: none;
+    }
+    .panel {
+      padding: 12px;
+    }
+    .users {
+      justify-content: center;
+      gap: 10px;
+    }
+  }
+
+  @media (max-width: 400px) {
+    h1.page-title {
+      font-size: 20px;
+      padding: 12px;
+    }
+    .topbar {
+      padding: 10px 12px;
+    }
+    .user {
+      width: 60px;
+      font-size: 10px;
+    }
+    .avatar-circle {
+      width: 40px;
+      height: 40px;
+      font-size: 12px;
+    }
+    .option {
+      font-size: 13px;
+    }
   }
 </style>
 </head>
