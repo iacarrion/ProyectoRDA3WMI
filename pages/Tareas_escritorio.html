@@ -149,22 +149,19 @@
   </div>
 
   <div class="tareas-list">
-    <div class="tareas-item">
-      <div class="icon-box"></div>
+    <div class="tareas-item"><input type="checkbox" class="tareas-check"><div class="icon-box"></div>
       <div>
         <h3>Tarea2-Desarrollo Web</h3>
         <p>Crear los user person en base a las encuestas</p>
       </div>
     </div>
-    <div class="tareas-item">
-      <div class="icon-box"></div>
+    <div class="tareas-item"><input type="checkbox" class="tareas-check"><div class="icon-box"></div>
       <div>
         <h3>Codigo de practica-Poo</h3>
         <p>Realizar el codigo similar al que se vio en clase</p>
       </div>
     </div>
-    <div class="tareas-item">
-      <div class="icon-box"></div>
+    <div class="tareas-item"><input type="checkbox" class="tareas-check"><div class="icon-box"></div>
       <div>
         <h3>Evaluacion RDA1-Base de datos</h3>
         <p>Repasar consultas y estructura relacional</p>
@@ -174,5 +171,32 @@
 
 </div>
 
+<script>
+document.querySelectorAll(".tareas-check").forEach(function(cb) {
+  cb.addEventListener("change", function() {
+    const item = cb.closest(".tareas-item");
+    item.style.opacity = cb.checked ? "0.5" : "1";
+    item.style.textDecoration = cb.checked ? "line-through" : "none";
+  });
+});
+
+const btnPendiente = document.querySelector(".btn-pendiente");
+const btnRealizadas = document.querySelector(".btn-realizadas");
+
+btnPendiente.addEventListener("click", function() {
+  document.querySelectorAll(".tareas-item").forEach(function(item) {
+    const checked = item.querySelector(".tareas-check").checked;
+    item.style.display = checked ? "none" : "flex";
+  });
+});
+
+btnRealizadas.addEventListener("click", function() {
+  document.querySelectorAll(".tareas-item").forEach(function(item) {
+    const checked = item.querySelector(".tareas-check").checked;
+    item.style.display = checked ? "flex" : "none";
+  });
+});
+</script>
 </body>
 </html>
+

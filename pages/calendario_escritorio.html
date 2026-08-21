@@ -124,5 +124,30 @@
   <a href="proyectos_escritorio.html" class="btn btn--outline">&#9654; Mis proyectos</a>
 </footer>
 
+<script>
+  document.querySelectorAll('.accordion-header').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      const item = btn.closest('.accordion-item');
+      const isOpen = item.classList.contains('open');
+
+      document.querySelectorAll('.accordion-item').forEach(function (el) {
+        el.classList.remove('open');
+        el.querySelector('.chevron').textContent = 'v';
+      });
+
+      if (!isOpen) {
+        item.classList.add('open');
+        btn.querySelector('.chevron').textContent = '^';
+      }
+    });
+  });
+
+  document.querySelectorAll('.exam-list input[type="checkbox"]').forEach(function(cb) {
+    cb.addEventListener('change', function() {
+      const li = cb.closest('li');
+      li.style.opacity = cb.checked ? '1' : '0.5';
+    });
+  });
+</script>
 </body>
 </html>

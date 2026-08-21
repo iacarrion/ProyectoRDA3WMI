@@ -1604,3 +1604,19 @@ body:has(.page) {
   background: #d9f2d9 !important;
   border: none !important;
 }
+
+/* ===== Botones +/- para progreso ===== */
+.progress-btn {
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--color-border);
+  background: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  line-height: 1;
+  padding: 0;
+}
+.progress-btn:hover {
+  background: var(--color-background);
+}

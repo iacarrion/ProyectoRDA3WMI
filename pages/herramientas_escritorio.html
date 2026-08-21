@@ -177,5 +177,26 @@ html
 
 </div>
 
+<script>
+  document.querySelectorAll('.checkbox').forEach(function(box) {
+    box.style.cursor = 'pointer';
+    box.addEventListener('click', function() {
+      box.classList.toggle('checked');
+      if (box.classList.contains('checked')) {
+        box.style.background = '#2457f5';
+      } else {
+        box.style.background = 'transparent';
+      }
+    });
+  });
+
+  document.querySelectorAll('.filter-item a').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const nombre = link.closest('.filter-item').querySelector('.left').textContent.trim();
+      alert('Filtro: ' + nombre + ' (funcionalidad de detalle en desarrollo)');
+    });
+  });
+</script>
 </body>
 </html>
