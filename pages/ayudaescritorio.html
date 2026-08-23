@@ -59,5 +59,40 @@
 
   </main>
 
+<script>
+  function filtrarPreguntas(texto) {
+    const items = document.querySelectorAll('.faq-list li');
+    texto = texto.toLowerCase();
+    items.forEach(function(li) {
+      const contenido = li.textContent.toLowerCase();
+      li.style.display = contenido.includes(texto) ? 'block' : 'none';
+    });
+  }
+
+  document.querySelector('.hero-input').addEventListener('input', function() {
+    filtrarPreguntas(this.value);
+    document.querySelector('.search-input').value = this.value;
+  });
+
+  document.querySelector('.search-input').addEventListener('input', function() {
+    filtrarPreguntas(this.value);
+    document.querySelector('.hero-input').value = this.value;
+  });
+
+  document.querySelector('.btn-submit').addEventListener('click', function() {
+    filtrarPreguntas(document.querySelector('.hero-input').value);
+  });
+
+  document.querySelector('.btn-search').addEventListener('click', function() {
+    filtrarPreguntas(document.querySelector('.search-input').value);
+  });
+
+  document.querySelectorAll('.faq-list a').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      alert('Respuesta: ' + link.textContent + '\n\n(Esta funcionalidad se ampliara proximamente con respuestas detalladas)');
+    });
+  });
+</script>
 </body>
 </html>

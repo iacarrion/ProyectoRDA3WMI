@@ -56,5 +56,38 @@
 
 </section>
 
+<script>
+  document.querySelectorAll('.card').forEach(function(card) {
+    card.style.cursor = 'pointer';
+    card.title = 'Clic para eliminar';
+    card.addEventListener('click', function() {
+      if (confirm('¿Eliminar este recordatorio?')) {
+        card.remove();
+      }
+    });
+  });
+
+  document.querySelector('.btn--primary').addEventListener('click', function() {
+    const titulo = prompt('Título del recordatorio:');
+    if (!titulo) return;
+    const fecha = prompt('¿Cuándo vence? (ej: "Vence en 3 días")', 'Vence en 3 días');
+
+    const contenedor = document.querySelector('.btn--primary').previousElementSibling;
+
+    const nuevaCard = document.createElement('div');
+    nuevaCard.className = 'card';
+    nuevaCard.style.cssText = 'flex-direction:row; align-items:center; gap:14px; cursor:pointer;';
+    nuevaCard.title = 'Clic para eliminar';
+    nuevaCard.innerHTML = '<div class="icon-box" aria-hidden="true"></div><div><h3>' + titulo + '</h3><p style="margin:2px 0 0; font-size:0.85rem; color:var(--color-muted);">' + (fecha || 'Sin fecha') + '</p></div>';
+
+    nuevaCard.addEventListener('click', function() {
+      if (confirm('¿Eliminar este recordatorio?')) {
+        nuevaCard.remove();
+      }
+    });
+
+    contenedor.appendChild(nuevaCard);
+  });
+</script>
 </body>
 </html>

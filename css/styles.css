@@ -1620,3 +1620,111 @@ body:has(.page) {
 .progress-btn:hover {
   background: var(--color-background);
 }
+
+/* ===== Tarjetas de progreso por materia ===== */
+.subject-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.subject-card {
+  background: #fff;
+  border-radius: var(--radius-md);
+  padding: var(--space-sm);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+.subject-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.subject-card-head h3 {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--color-text);
+}
+.subject-card-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  font-size: 0.75rem;
+  color: var(--color-muted);
+}
+.subject-card-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+  justify-content: flex-end;
+}
+
+/* ===== Proyectos: responsive completo ===== */
+.proyectos-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: var(--space-sm);
+}
+.proyectos-botones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+.proyectos-contenido {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: var(--space-lg);
+}
+.proyectos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+}
+.proyecto-card img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-sm);
+}
+
+@media (max-width: 900px) {
+  .proyectos-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .proyectos-grid {
+    grid-template-columns: 1fr;
+  }
+  .proyectos-contenido {
+    padding: var(--space-md);
+  }
+  .proyectos-header h1 {
+    font-size: 28px !important;
+  }
+  .proyectos-botones button {
+    flex: 1 1 100%;
+  }
+  .proyectos-imagen-principal {
+    width: 100% !important;
+    height: auto !important;
+  }
+}
+
+/* ===== Imagen real del hero en Inicio ===== */
+img.hero-img {
+  object-fit: cover;
+  width: 100%;
+}
+
+/* ===== Fondo de pantalla Registro ===== */
+.registro-page {
+  background-image: linear-gradient(rgba(36, 87, 245, 0.55), rgba(36, 87, 245, 0.55)), url('https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=1200');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 100vh;
+}
