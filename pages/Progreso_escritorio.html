@@ -54,10 +54,6 @@
           <span>Tareas: 8/10</span>
           <span>Actualizado: hace 2 dias</span>
         </div>
-        <div class="subject-card-actions">
-          <button class="progress-btn progress-minus">-</button>
-          <button class="progress-btn progress-plus">+</button>
-        </div>
       </div>
 
       <div class="subject-card" data-materia="Desarrollo web">
@@ -69,10 +65,6 @@
         <div class="subject-card-meta">
           <span>Tareas: 5/8</span>
           <span>Actualizado: hace 1 dia</span>
-        </div>
-        <div class="subject-card-actions">
-          <button class="progress-btn progress-minus">-</button>
-          <button class="progress-btn progress-plus">+</button>
         </div>
       </div>
 
@@ -86,10 +78,6 @@
           <span>Tareas: 3/9</span>
           <span>Actualizado: hace 4 dias</span>
         </div>
-        <div class="subject-card-actions">
-          <button class="progress-btn progress-minus">-</button>
-          <button class="progress-btn progress-plus">+</button>
-        </div>
       </div>
 
       <div class="subject-card" data-materia="Interaccion e inteligencia artificial">
@@ -102,10 +90,6 @@
           <span>Tareas: 10/11</span>
           <span>Actualizado: hoy</span>
         </div>
-        <div class="subject-card-actions">
-          <button class="progress-btn progress-minus">-</button>
-          <button class="progress-btn progress-plus">+</button>
-        </div>
       </div>
 
     </div>
@@ -113,13 +97,84 @@
 </div>
 
 <script>
+  const STORAGE_KEY = "eduplaner_tareas";
+
+  function obtenerDatosPorMateria(nombreMateria) {
+    const guardado = localStorage.getItem(STORAGE_KEY);
+    if (!guardado) return null;
+    const tareas = JSON.parse(guardado);
+    const deEstaMateria = tareas.filter(t => t.materia === nombreMateria);
+    if (deEstaMateria.length === 0) return null;
+    const completadas = deEstaMateria.filter(t => t.completada).length;
+    const total = deEstaMateria.length;
+    const porcentaje = Math.round((completadas / total) * 100);
+    return { completadas, total, porcentaje };
+  }
+
+  function sincronizarConTareas() {
+    const guardado = localStorage.getItem(STORAGE_KEY);
+    if (!guardado) return;
+    const tareas = JSON.parse(guardado);
+
+    const materiasUnicas = [...new Set(tareas.map(t => t.materia))];
+    const contenedor = document.querySelector('.subject-cards');
+
+    materiasUnicas.forEach(function(materia) {
+      let card = document.querySelector('.subject-card[data-materia="' + materia + '"]');
+
+      if (!card) {
+        card = document.createElement('div');
+        card.className = 'subject-card';
+        card.dataset.materia = materia;
+        card.innerHTML =
+          '<div class="subject-card-head"><h3>' + materia + '</h3><span class="progress-percent">0%</span></div>' +
+          '<div class="progress-bar"><span style="width: 0%"></span></div>' +
+          '<div class="subject-card-meta"><span>Tareas: 0/0</span><span>Actualizado: ahora</span></div>';
+        contenedor.appendChild(card);
+
+        card.style.cursor = 'pointer';
+        card.addEventListener('click', function() {
+          const selector = document.getElementById('selectorMateria');
+          if (selector) {
+            if (![...selector.options].some(o => o.value === materia)) {
+              const opt = document.createElement('option');
+              opt.value = materia;
+              opt.textContent = materia;
+              selector.appendChild(opt);
+            }
+            selector.value = materia;
+            actualizarGrafico();
+          }
+        });
+
+        const selector = document.getElementById('selectorMateria');
+        if (selector && ![...selector.options].some(o => o.value === materia)) {
+          const opt = document.createElement('option');
+          opt.value = materia;
+          opt.textContent = materia;
+          selector.appendChild(opt);
+        }
+      }
+
+      const datos = obtenerDatosPorMateria(materia);
+      if (!datos) return;
+
+      card.querySelector('.progress-percent').textContent = datos.porcentaje + '%';
+      card.querySelector('.progress-bar span').style.width = datos.porcentaje + '%';
+      const metaEl = card.querySelector('.subject-card-meta span');
+      if (metaEl) metaEl.textContent = 'Tareas: ' + datos.completadas + '/' + datos.total;
+    });
+
+    actualizarGrafico();
+  }
+
   function actualizarGrafico() {
     const selector = document.getElementById('selectorMateria');
     let promedio;
 
     if (selector && selector.value !== 'general') {
       const cards = document.querySelectorAll('.subject-card');
-      let encontrado = 70;
+      let encontrado = 0;
       cards.forEach(function(card) {
         if (card.dataset.materia === selector.value) {
           encontrado = parseInt(card.querySelector('.progress-percent').textContent);
@@ -148,27 +203,8 @@
   }
 
   document.querySelectorAll('.subject-card').forEach(function(card) {
-    const percentEl = card.querySelector('.progress-percent');
-    const barEl = card.querySelector('.progress-bar span');
-    const btnMinus = card.querySelector('.progress-minus');
-    const btnPlus = card.querySelector('.progress-plus');
-
-    function actualizarBarra(valor) {
-      valor = Math.max(0, Math.min(100, valor));
-      percentEl.textContent = valor + '%';
-      barEl.style.width = valor + '%';
-      actualizarGrafico();
-    }
-
-    btnMinus.addEventListener('click', function() {
-      actualizarBarra(parseInt(percentEl.textContent) - 5);
-    });
-    btnPlus.addEventListener('click', function() {
-      actualizarBarra(parseInt(percentEl.textContent) + 5);
-    });
-
-    card.addEventListener('click', function(e) {
-      if (e.target.classList.contains('progress-btn')) return;
+    card.style.cursor = 'pointer';
+    card.addEventListener('click', function() {
       const selector = document.getElementById('selectorMateria');
       if (selector) {
         selector.value = card.dataset.materia;
@@ -182,7 +218,7 @@
     selectorMateria.addEventListener('change', actualizarGrafico);
   }
 
-  actualizarGrafico();
+  sincronizarConTareas();
 </script>
 </body>
 </html>

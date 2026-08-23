@@ -148,55 +148,125 @@
     <button class="btn-realizadas">Realizadas</button>
   </div>
 
-  <div class="tareas-list">
-    <div class="tareas-item"><input type="checkbox" class="tareas-check"><div class="icon-box"></div>
-      <div>
-        <h3>Tarea2-Desarrollo Web</h3>
-        <p>Crear los user person en base a las encuestas</p>
-      </div>
-    </div>
-    <div class="tareas-item"><input type="checkbox" class="tareas-check"><div class="icon-box"></div>
-      <div>
-        <h3>Codigo de practica-Poo</h3>
-        <p>Realizar el codigo similar al que se vio en clase</p>
-      </div>
-    </div>
-    <div class="tareas-item"><input type="checkbox" class="tareas-check"><div class="icon-box"></div>
-      <div>
-        <h3>Evaluacion RDA1-Base de datos</h3>
-        <p>Repasar consultas y estructura relacional</p>
-      </div>
-    </div>
+  <div id="formNuevaTarea" style="display:flex; flex-direction:column; gap:8px; background:#f7f8fa; border-radius:12px; padding:14px; margin-bottom:16px;">
+    <select id="inputMateria" class="input">
+      <option value="Redes">Redes</option>
+      <option value="Desarrollo web">Desarrollo web</option>
+      <option value="Programacion orientada a objetos">Programacion orientada a objetos</option>
+      <option value="Interaccion e inteligencia artificial">Interaccion e inteligencia artificial</option>
+    <option value="__otra__">+ Otra materia...</option>
+    </select>
+    <input type="text" id="inputMateriaOtra" class="input" placeholder="Nombre de la nueva materia" style="display:none;">
+    <input type="text" id="inputTitulo" class="input" placeholder="Titulo de la tarea">
+    <input type="text" id="inputDescripcion" class="input" placeholder="Descripcion breve">
+    <button id="btnAgregarTarea" class="btn btn--primary" style="align-self:flex-start;">+ Agregar tarea</button>
   </div>
+
+  <div class="tareas-list">
+  <div class="tareas-list" id="listaTareas"></div>
 
 </div>
 
 <script>
-document.querySelectorAll(".tareas-check").forEach(function(cb) {
-  cb.addEventListener("change", function() {
-    const item = cb.closest(".tareas-item");
-    item.style.opacity = cb.checked ? "0.5" : "1";
-    item.style.textDecoration = cb.checked ? "line-through" : "none";
-  });
-});
+  const STORAGE_KEY = "eduplaner_tareas";
 
-const btnPendiente = document.querySelector(".btn-pendiente");
-const btnRealizadas = document.querySelector(".btn-realizadas");
+  function cargarTareas() {
+    const guardado = localStorage.getItem(STORAGE_KEY);
+    if (guardado) return JSON.parse(guardado);
 
-btnPendiente.addEventListener("click", function() {
-  document.querySelectorAll(".tareas-item").forEach(function(item) {
-    const checked = item.querySelector(".tareas-check").checked;
-    item.style.display = checked ? "none" : "flex";
-  });
-});
+    const inicial = [
+      { materia: "Desarrollo web", titulo: "Tarea2-Desarrollo Web", descripcion: "Crear los user person en base a las encuestas", completada: false },
+      { materia: "Programacion orientada a objetos", titulo: "Codigo de practica-Poo", descripcion: "Realizar el codigo similar al que se vio en clase", completada: false },
+      { materia: "Redes", titulo: "Evaluacion RDA1-Base de datos", descripcion: "Repasar consultas y estructura relacional", completada: false },
+      { materia: "Interaccion e inteligencia artificial", titulo: "Entrenamiento de modelo IA", descripcion: "Ajustar hiperparametros del modelo de clasificacion", completada: false }
+    ];
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(inicial));
+    return inicial;
+  }
 
-btnRealizadas.addEventListener("click", function() {
-  document.querySelectorAll(".tareas-item").forEach(function(item) {
-    const checked = item.querySelector(".tareas-check").checked;
-    item.style.display = checked ? "flex" : "none";
+  function guardarTareas(tareas) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(tareas));
+  }
+
+  function renderizarTareas() {
+    const tareas = cargarTareas();
+    const lista = document.getElementById("listaTareas");
+    lista.innerHTML = "";
+
+    tareas.forEach(function(tarea, index) {
+      const item = document.createElement("div");
+      item.className = "tareas-item";
+      item.dataset.materia = tarea.materia;
+      if (tarea.completada) {
+        item.style.opacity = "0.5";
+        item.style.textDecoration = "line-through";
+      }
+
+      item.innerHTML =
+        '<input type="checkbox" class="tareas-check" ' + (tarea.completada ? "checked" : "") + '>' +
+        '<div class="icon-box"></div>' +
+        '<div><h3>' + tarea.titulo + '</h3>' +
+        '<p>' + tarea.descripcion + ' &middot; <em>' + tarea.materia + '</em></p></div>';
+
+      item.querySelector(".tareas-check").addEventListener("change", function() {
+        tarea.completada = this.checked;
+        guardarTareas(tareas);
+        renderizarTareas();
+        if (typeof sincronizarConTareas === "function") sincronizarConTareas();
+      });
+
+      lista.appendChild(item);
+    });
+  }
+
+  document.getElementById("inputMateria").addEventListener("change", function() {
+    const otraInput = document.getElementById("inputMateriaOtra");
+    otraInput.style.display = this.value === "__otra__" ? "block" : "none";
   });
-});
+
+  document.getElementById("btnAgregarTarea").addEventListener("click", function() {
+    let materia = document.getElementById("inputMateria").value;
+    if (materia === "__otra__") {
+      const nueva = document.getElementById("inputMateriaOtra").value.trim();
+      if (!nueva) {
+        alert("Escribe el nombre de la nueva materia.");
+        return;
+      }
+      materia = nueva;
+    }
+    const titulo = document.getElementById("inputTitulo").value.trim();
+    const descripcion = document.getElementById("inputDescripcion").value.trim();
+
+    if (!titulo) {
+      alert("Escribe un titulo para la tarea.");
+      return;
+    }
+
+    const tareas = cargarTareas();
+    tareas.push({ materia: materia, titulo: titulo, descripcion: descripcion || "Sin descripcion", completada: false });
+    guardarTareas(tareas);
+
+    document.getElementById("inputTitulo").value = "";
+    document.getElementById("inputDescripcion").value = "";
+
+    renderizarTareas();
+  });
+
+  document.querySelector(".btn-pendiente").addEventListener("click", function() {
+    document.querySelectorAll(".tareas-item").forEach(function(item) {
+      const checked = item.querySelector(".tareas-check").checked;
+      item.style.display = checked ? "none" : "flex";
+    });
+  });
+
+  document.querySelector(".btn-realizadas").addEventListener("click", function() {
+    document.querySelectorAll(".tareas-item").forEach(function(item) {
+      const checked = item.querySelector(".tareas-check").checked;
+      item.style.display = checked ? "flex" : "none";
+    });
+  });
+
+  renderizarTareas();
 </script>
 </body>
 </html>
-
