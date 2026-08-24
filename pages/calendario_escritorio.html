@@ -85,38 +85,10 @@
 <section class="exam-list" aria-label="Examenes">
   <h2>Examenes</h2>
 
-  <ul>
-    <li>
-      <span class="exam-avatar">D</span>
-      <span class="exam-name">Desarrollo</span>
-      <input type="checkbox" checked aria-label="Desarrollo completado">
-    </li>
-    <li>
-      <span class="exam-avatar">P</span>
-      <span class="exam-name">Programacion</span>
-      <input type="checkbox" checked aria-label="Programacion completado">
-    </li>
-    <li>
-      <span class="exam-avatar">B</span>
-      <span class="exam-name">Base de datos</span>
-      <input type="checkbox" checked aria-label="Base de datos completado">
-    </li>
-    <li>
-      <span class="exam-avatar">R</span>
-      <span class="exam-name">Redes</span>
-      <input type="checkbox" checked aria-label="Redes completado">
-    </li>
-    <li>
-      <span class="exam-avatar">S</span>
-      <span class="exam-name">Sistema Operativo</span>
-      <input type="checkbox" checked aria-label="Sistema Operativo completado">
-    </li>
-    <li>
-      <span class="exam-avatar">IA</span>
-      <span class="exam-name">IA</span>
-      <input type="checkbox" checked aria-label="IA completado">
+  <ul id="listaExamenes"></ul>
     </li>
   </ul>
+  <button type="button" id="btnAgregarExamen" class="btn btn--outline" style="margin-top:12px;">+ Agregar examen</button>
 </section>
 
 <footer class="calendar-actions">
@@ -142,12 +114,73 @@
     });
   });
 
-  document.querySelectorAll('.exam-list input[type="checkbox"]').forEach(function(cb) {
-    cb.addEventListener('change', function() {
-      const li = cb.closest('li');
-      li.style.opacity = cb.checked ? '1' : '0.5';
+  const EXAM_KEY = "eduplaner_examenes";
+
+  function cargarExamenesData() {
+    const guardado = localStorage.getItem(EXAM_KEY);
+    if (guardado) return JSON.parse(guardado);
+
+    const inicial = [
+      { nombre: "Desarrollo", completado: true },
+      { nombre: "Programacion", completado: true },
+      { nombre: "Base de datos", completado: true },
+      { nombre: "Redes", completado: true },
+      { nombre: "Sistema Operativo", completado: true },
+      { nombre: "IA", completado: true }
+    ];
+    localStorage.setItem(EXAM_KEY, JSON.stringify(inicial));
+    return inicial;
+  }
+
+  function guardarExamenesData(examenes) {
+    localStorage.setItem(EXAM_KEY, JSON.stringify(examenes));
+  }
+
+  function renderizarExamenes() {
+    const examenes = cargarExamenesData();
+    const lista = document.getElementById("listaExamenes");
+    lista.innerHTML = "";
+
+    examenes.forEach(function(examen, index) {
+      const li = document.createElement("li");
+      li.style.opacity = examen.completado ? "1" : "0.5";
+
+      const spanAvatar = document.createElement("span");
+      spanAvatar.className = "exam-avatar";
+      spanAvatar.textContent = examen.nombre.charAt(0).toUpperCase();
+
+      const spanNombre = document.createElement("span");
+      spanNombre.className = "exam-name";
+      spanNombre.textContent = examen.nombre;
+
+      const checkbox = document.createElement("input");
+      checkbox.type = "checkbox";
+      checkbox.checked = examen.completado;
+
+      li.appendChild(spanAvatar);
+      li.appendChild(spanNombre);
+      li.appendChild(checkbox);
+      lista.appendChild(li);
+
+      checkbox.addEventListener("change", function() {
+        examen.completado = checkbox.checked;
+        li.style.opacity = checkbox.checked ? "1" : "0.5";
+        guardarExamenesData(examenes);
+      });
     });
+  }
+
+  document.getElementById("btnAgregarExamen").addEventListener("click", function() {
+    const nombre = prompt("Nombre del examen:");
+    if (!nombre) return;
+
+    const examenes = cargarExamenesData();
+    examenes.push({ nombre: nombre, completado: false });
+    guardarExamenesData(examenes);
+    renderizarExamenes();
   });
+
+  renderizarExamenes();
 </script>
 </body>
 </html>
