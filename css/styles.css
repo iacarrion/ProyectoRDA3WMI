@@ -1972,3 +1972,30 @@ header.topbar {
   background: linear-gradient(135deg, #fee2e2, #ffe3e3);
   border-left: 4px solid #dc2626;
 }
+
+/* ============================================
+   BOTON FLOTANTE VOLVER AL INICIO
+   ============================================ */
+.btn-flotante-inicio {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #2457f5, #7c3aed);
+  color: #fff;
+  text-decoration: none;
+  padding: 12px 18px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-family: var(--font-primary);
+  box-shadow: 0 6px 20px rgba(36, 87, 245, 0.35);
+  z-index: 50;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-flotante-inicio:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(36, 87, 245, 0.45);
+}
