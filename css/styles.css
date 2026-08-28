@@ -1733,3 +1733,15 @@ img.hero-img {
 .hero-text p {
   color: #4a5568 !important;
 }
+
+/* ===== Recordatorios: 3 columnas en escritorio ===== */
+@media (min-width: 900px) {
+  section:has(.card) > div[style*="flex-direction:column"] {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row !important;
+  }
+  section:has(.card) > div[style*="flex-direction:column"] .card {
+    flex: 1 1 30%;
+  }
+}
