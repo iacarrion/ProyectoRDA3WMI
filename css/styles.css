@@ -1890,3 +1890,85 @@ p {
   .hero-img { height: 160px; }
   .tareas-images div { height: 130px; }
 }
+
+/* ============================================
+   PALETA MAS VIBRANTE Y PROFESIONAL
+   ============================================ */
+:root {
+  --color-accent: #7c3aed;
+  --color-accent-2: #06b6d4;
+}
+
+/* Header con degradado sutil, mas dinamico */
+header.topbar {
+  background: linear-gradient(135deg, #ffffff 0%, #f0f4ff 100%);
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* Botones primarios mas vivos */
+.btn--primary {
+  background: linear-gradient(135deg, #2457f5, #7c3aed);
+  box-shadow: 0 4px 14px rgba(124, 58, 237, 0.25);
+}
+.btn--primary:hover {
+  box-shadow: 0 6px 20px rgba(124, 58, 237, 0.35);
+}
+
+/* Fondo de Inicio mas vivo, con degradado */
+.inicio-page {
+  background: linear-gradient(180deg, #d9f2d9 0%, #eafbea 100%);
+}
+
+/* Calendario: morado mas saturado y profesional */
+.calendar-page {
+  background: linear-gradient(160deg, #a78bfa 0%, #8f8bd9 100%);
+}
+.calendar-widget {
+  border-top: 3px solid #7c3aed;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+}
+
+/* Progreso: verde con acento */
+.progress-page {
+  background: linear-gradient(160deg, #bbf7d0 0%, #b9f2b0 100%);
+}
+.chart-card {
+  border-top: 3px solid #16a34a;
+}
+
+/* Registro: overlay mas vivo */
+.registro-page {
+  background-image: linear-gradient(rgba(124, 58, 237, 0.55), rgba(36, 87, 245, 0.55)), url('https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=1200');
+}
+
+/* Tarjetas con acento de color al pasar el mouse */
+.card {
+  border-top: 3px solid transparent;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+.card:hover {
+  border-top-color: var(--color-accent);
+}
+
+/* Avatares e iconos con degradado */
+.exam-avatar {
+  background: linear-gradient(135deg, #7c3aed, #6f5fc4);
+}
+.avatar-circle {
+  border-width: 2px;
+}
+
+/* Barra de progreso con degradado vivo */
+.progress-bar span {
+  background: linear-gradient(90deg, #16a34a, #4ade80);
+}
+
+/* Alertas mas vistosas */
+.alert--success {
+  background: linear-gradient(135deg, #dcfce7, #e6fcf5);
+  border-left: 4px solid #16a34a;
+}
+.alert--error {
+  background: linear-gradient(135deg, #fee2e2, #ffe3e3);
+  border-left: 4px solid #dc2626;
+}
