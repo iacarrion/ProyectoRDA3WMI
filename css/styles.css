@@ -1758,3 +1758,135 @@ img.hero-img {
   outline-offset: 2px;
   border-radius: 4px;
 }
+
+/* ============================================
+   IMAGENES RESPONSIVE (todas las pantallas)
+   ============================================ */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+.hero-img,
+img.hero-img,
+.proyecto-card img,
+.proyectos-imagen-principal,
+.tareas-images div {
+  object-fit: cover;
+}
+
+/* ============================================
+   SOMBRAS Y ELEVACION CONSISTENTE
+   ============================================ */
+.card,
+.subject-card,
+.auth-card,
+.chart-card,
+.exam-list,
+header.topbar {
+  box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04), 0 2px 8px rgba(16, 24, 40, 0.06);
+}
+.card:hover,
+.subject-card:hover {
+  box-shadow: 0 4px 12px rgba(16, 24, 40, 0.06), 0 10px 24px rgba(16, 24, 40, 0.08);
+  transform: translateY(-3px);
+}
+
+/* ============================================
+   BOTONES CON ACABADO PRO (degradado sutil)
+   ============================================ */
+.btn--primary {
+  background: linear-gradient(135deg, var(--color-primary), #1a44d4);
+  box-shadow: 0 2px 6px rgba(36, 87, 245, 0.28);
+}
+.btn--primary:hover {
+  box-shadow: 0 4px 12px rgba(36, 87, 245, 0.35);
+  transform: translateY(-1px);
+}
+.btn--success {
+  background: linear-gradient(135deg, #2f9e44, #227a34);
+}
+.btn--danger {
+  background: linear-gradient(135deg, #e03131, #b02525);
+}
+
+/* ============================================
+   ARMONIA DE COLOR ENTRE PANTALLAS
+   Se agrega un acento superior con el color
+   primario general, sin perder la identidad
+   de cada seccion (morado/verde)
+   ============================================ */
+.calendar-widget {
+  border-top: 3px solid var(--color-primary);
+}
+.progress-page .chart-card {
+  border-top: 3px solid var(--color-primary);
+}
+.calendar-page .topbar,
+.progress-page .progress-title {
+  position: relative;
+}
+.calendar-actions .btn--outline,
+body.registro-page .btn--primary {
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+/* ============================================
+   TIPOGRAFIA MAS REFINADA
+   ============================================ */
+h1, .page-title, .progress-title {
+  letter-spacing: -0.01em;
+}
+h2, h3 {
+  letter-spacing: -0.005em;
+}
+body {
+  line-height: 1.5;
+}
+p {
+  line-height: 1.6;
+}
+
+/* ============================================
+   TARJETAS: borde sutil + radio consistente
+   ============================================ */
+.card,
+.subject-card,
+.exam-avatar,
+.avatar-circle {
+  transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.2s ease;
+}
+.card {
+  border-color: transparent;
+}
+.card:hover {
+  border-color: var(--color-border);
+}
+
+/* ============================================
+   INPUTS: foco mas vistoso
+   ============================================ */
+.input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(36, 87, 245, 0.12);
+}
+
+/* ============================================
+   BARRA DE PROGRESO CON DEGRADADO
+   ============================================ */
+.progress-bar span {
+  background: linear-gradient(90deg, #2f9e44, #51cf66);
+}
+
+/* ============================================
+   IMAGENES RESPONSIVE ESPECIFICAS
+   ============================================ */
+@media (max-width: 900px) {
+  .proyecto-card img { height: 120px; }
+  .hero-img { height: 200px; }
+}
+@media (max-width: 560px) {
+  .proyecto-card img { height: 140px; }
+  .hero-img { height: 160px; }
+  .tareas-images div { height: 130px; }
+}
