@@ -1751,3 +1751,10 @@ img.hero-img {
   --color-accent-calendar: #8f8bd9;
   --color-accent-progress: #b9f2b0;
 }
+
+/* ===== Foco visible consistente en todas las pantallas ===== */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
