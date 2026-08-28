@@ -1745,3 +1745,9 @@ img.hero-img {
     flex: 1 1 30%;
   }
 }
+
+/* ===== Variables de acento por pantalla (documentado para consistencia) ===== */
+:root {
+  --color-accent-calendar: #8f8bd9;
+  --color-accent-progress: #b9f2b0;
+}
