@@ -1728,3 +1728,8 @@ img.hero-img {
   background-attachment: fixed;
   min-height: 100vh;
 }
+
+/* ===== Correccion de contraste (WAVE) ===== */
+.hero-text p {
+  color: #4a5568 !important;
+}
