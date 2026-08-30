@@ -1,137 +1,29 @@
-html
 <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Herramientas de busqueda y filtros de EduPlaner.">
 <title>Herramientas - EduPlaner</title>
 <link rel="stylesheet" href="../css/styles.css">
-<style>
-  body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    color: #000;
-    background: #fff;
-  }
-
-  .layout {
-    background: #d9f2d9;
-    display: flex;
-    min-height: 100vh;
-    border: 1px solid #000;
-  }
-
-  .sidebar {
-    width: 260px;
-    border-right: 1px solid #000;
-    padding: 15px;
-    flex-shrink: 0;
-  }
-
-  .sidebar-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 15px;
-    font-size: 13px;
-  }
-
-  .sidebar-top .icons span {
-    margin-left: 8px;
-    border: 1px solid #000;
-    padding: 2px 6px;
-    font-size: 11px;
-  }
-
-  .search-box {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    border: 1px solid #000;
-    padding: 6px 10px;
-    margin-bottom: 15px;
-    font-size: 13px;
-  }
-
-  .search-box input {
-    border: none;
-    outline: none;
-    flex: 1;
-    font-size: 13px;
-  }
-
-  .filter-list {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .filter-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 0;
-    border-top: 1px solid #000;
-    font-size: 14px;
-  }
-
-  .filter-item:last-child {
-    border-bottom: 1px solid #000;
-  }
-
-  .filter-item .left {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .checkbox {
-    width: 14px;
-    height: 14px;
-    border: 1px solid #000;
-    flex-shrink: 0;
-  }
-
-  .filter-item a {
-    color: #000;
-    text-decoration: underline;
-    font-size: 12px;
-  }
-
-  .content {
-    flex: 1;
-    padding: 20px;
-  }
-
-  .content .search-box {
-    max-width: 400px;
-  }
-
-  .content h1 {
-    margin-top: 20px;
-    font-size: 22px;
-  }
-</style>
 </head>
 <body class="herramientas-page">
 
-<div class="layout">
+<header class="topbar">
+  <a href="../index.html" style="text-decoration:none;color:inherit;font-weight:bold;">&larr; EDUPLANER</a>
+  <div class="avatar" role="img" aria-label="Foto de perfil de usuario"></div>
+</header>
 
-  <div class="sidebar">
-    <div class="sidebar-top">
-      <span>Editar</span>
-      <div class="icons">
-        <span>o</span>
-        <span>&#9670;</span>
-        <span>[ ]</span>
-      </div>
-    </div>
+<div class="herr-layout">
 
-    <div class="search-box">
+  <aside class="herr-sidebar">
+    <h2 class="herr-sidebar-title">Filtros</h2>
+    <div class="herr-search-box">
       <span>&#128269;</span>
-      <input type="text" placeholder="Buscar">
+      <input type="text" id="filtroBuscar" placeholder="Buscar filtro...">
     </div>
 
-    <div class="filter-list">
+    <div class="filter-list" id="listaFiltros">
       <div class="filter-item">
         <div class="left"><span class="checkbox"></span>Materias</div>
         <a href="#">Detalle</a>
@@ -165,38 +57,117 @@ html
         <a href="#">Detalle</a>
       </div>
     </div>
-  </div>
+  </aside>
 
-  <div class="content">
-    <div class="search-box">
+  <main class="herr-content">
+    <div class="search-box herr-search-main">
       <span>&#128269;</span>
-      <input type="text" placeholder="Busca lo que necesites">
+      <input type="text" id="buscarTareas" placeholder="Busca en tus tareas...">
     </div>
+
     <h1>Herramientas</h1>
-  </div>
+    <p class="herr-subtitle">Encuentra rapido tus tareas y revisa un resumen de tu actividad.</p>
+
+    <div class="herr-stats" id="herrStats">
+      <div class="herr-stat-card">
+        <span class="herr-stat-num" id="statTotal">0</span>
+        <span class="herr-stat-label">Tareas totales</span>
+      </div>
+      <div class="herr-stat-card">
+        <span class="herr-stat-num" id="statPendientes">0</span>
+        <span class="herr-stat-label">Pendientes</span>
+      </div>
+      <div class="herr-stat-card">
+        <span class="herr-stat-num" id="statCompletadas">0</span>
+        <span class="herr-stat-label">Completadas</span>
+      </div>
+      <div class="herr-stat-card">
+        <span class="herr-stat-num" id="statMaterias">0</span>
+        <span class="herr-stat-label">Materias activas</span>
+      </div>
+    </div>
+
+    <h2 class="herr-section-title">Resultados</h2>
+    <div id="resultadosTareas" class="herr-resultados"></div>
+  </main>
 
 </div>
 
 <script>
-  document.querySelectorAll('.checkbox').forEach(function(box) {
-    box.style.cursor = 'pointer';
-    box.addEventListener('click', function() {
-      box.classList.toggle('checked');
-      if (box.classList.contains('checked')) {
-        box.style.background = '#2457f5';
-      } else {
-        box.style.background = 'transparent';
-      }
+  const STORAGE_KEY = "eduplaner_tareas";
+
+  function obtenerTareas() {
+    const guardado = localStorage.getItem(STORAGE_KEY);
+    return guardado ? JSON.parse(guardado) : [];
+  }
+
+  function actualizarEstadisticas() {
+    const tareas = obtenerTareas();
+    const completadas = tareas.filter(t => t.completada).length;
+    const materiasUnicas = new Set(tareas.map(t => t.materia)).size;
+
+    document.getElementById("statTotal").textContent = tareas.length;
+    document.getElementById("statPendientes").textContent = tareas.length - completadas;
+    document.getElementById("statCompletadas").textContent = completadas;
+    document.getElementById("statMaterias").textContent = materiasUnicas;
+  }
+
+  function renderizarResultados(filtro) {
+    const tareas = obtenerTareas();
+    const contenedor = document.getElementById("resultadosTareas");
+    contenedor.innerHTML = "";
+
+    const filtradas = filtro
+      ? tareas.filter(t => (t.titulo + " " + t.materia + " " + t.descripcion).toLowerCase().includes(filtro.toLowerCase()))
+      : tareas;
+
+    if (filtradas.length === 0) {
+      contenedor.innerHTML = '<p class="herr-vacio">No se encontraron tareas. Crea una nueva desde la pantalla de Tareas.</p>';
+      return;
+    }
+
+    filtradas.forEach(function(t) {
+      const item = document.createElement("div");
+      item.className = "herr-resultado-item";
+      item.innerHTML =
+        '<span class="herr-badge">' + t.materia + '</span>' +
+        '<div><strong>' + t.titulo + '</strong><p>' + (t.descripcion || "") + '</p></div>' +
+        '<span class="herr-estado ' + (t.completada ? 'ok' : 'pend') + '">' + (t.completada ? "Completada" : "Pendiente") + '</span>';
+      contenedor.appendChild(item);
+    });
+  }
+
+  document.getElementById("buscarTareas").addEventListener("input", function() {
+    renderizarResultados(this.value);
+  });
+
+  document.querySelectorAll(".checkbox").forEach(function(box) {
+    box.style.cursor = "pointer";
+    box.addEventListener("click", function() {
+      box.classList.toggle("checked");
+      box.style.background = box.classList.contains("checked") ? "#2457f5" : "transparent";
     });
   });
 
-  document.querySelectorAll('.filter-item a').forEach(function(link) {
-    link.addEventListener('click', function(e) {
+  document.querySelectorAll(".filter-item a").forEach(function(link) {
+    link.addEventListener("click", function(e) {
       e.preventDefault();
-      const nombre = link.closest('.filter-item').querySelector('.left').textContent.trim();
-      alert('Filtro: ' + nombre + ' (funcionalidad de detalle en desarrollo)');
+      const nombre = link.closest(".filter-item").querySelector(".left").textContent.trim();
+      alert("Filtro: " + nombre + " (funcionalidad de detalle en desarrollo)");
     });
   });
+
+  document.getElementById("filtroBuscar").addEventListener("input", function() {
+    const texto = this.value.toLowerCase();
+    document.querySelectorAll("#listaFiltros .filter-item").forEach(function(item) {
+      const nombre = item.querySelector(".left").textContent.toLowerCase();
+      item.style.display = nombre.includes(texto) ? "flex" : "none";
+    });
+  });
+
+  actualizarEstadisticas();
+  renderizarResultados("");
 </script>
+
 </body>
 </html>
