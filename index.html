@@ -12,7 +12,7 @@
 
 <header class="topbar">
   <h1>EDUPLANER</h1>
-  <div class="avatar" role="img" aria-label="Foto de perfil de usuario"></div>
+  <div id="sesionInfo" style="display:flex; align-items:center; gap:10px;"></div>
 </header>
 
 <section class="hero">
@@ -114,5 +114,23 @@
 
 </nav>
 
+<script>
+  const sesion = JSON.parse(localStorage.getItem("eduplaner_sesion") || "null");
+  const contenedor = document.getElementById("sesionInfo");
+  if (sesion) {
+    contenedor.innerHTML =
+      "<span style=\"font-size:0.85rem; color:var(--color-text);\">Hola, " + sesion.nombre + "</span>" +
+      "<button id=\"btnCerrarSesion\" class=\"btn btn--outline\" style=\"padding:6px 12px; font-size:0.75rem;\">Cerrar sesion</button>" +
+      "<div class=\"avatar\"></div>";
+    document.getElementById("btnCerrarSesion").addEventListener("click", function() {
+      localStorage.removeItem("eduplaner_sesion");
+      location.reload();
+    });
+  } else {
+    contenedor.innerHTML =
+      "<a href=\"pages/login.html\" class=\"btn btn--outline\" style=\"padding:6px 14px; font-size:0.8rem;\">Iniciar sesion</a>" +
+      "<div class=\"avatar\"></div>";
+  }
+</script>
 </body>
 </html>

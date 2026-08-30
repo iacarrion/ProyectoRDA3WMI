@@ -168,18 +168,18 @@
 </div>
 
 <script>
-  const STORAGE_KEY = "eduplaner_tareas";
+  const sesion = JSON.parse(localStorage.getItem("eduplaner_sesion") || "null");
+  if (!sesion) {
+    alert("Debes iniciar sesion para ver y crear tus tareas.");
+    window.location.href = "login.html";
+  }
+  const STORAGE_KEY = "eduplaner_tareas_" + (sesion ? sesion.correo : "invitado");
 
   function cargarTareas() {
     const guardado = localStorage.getItem(STORAGE_KEY);
     if (guardado) return JSON.parse(guardado);
-
-    const inicial = [
-      { materia: "Desarrollo web", titulo: "Tarea2-Desarrollo Web", descripcion: "Crear los user person en base a las encuestas", completada: false },
-      { materia: "Programacion orientada a objetos", titulo: "Codigo de practica-Poo", descripcion: "Realizar el codigo similar al que se vio en clase", completada: false },
-      { materia: "Redes", titulo: "Evaluacion RDA1-Base de datos", descripcion: "Repasar consultas y estructura relacional", completada: false },
-      { materia: "Interaccion e inteligencia artificial", titulo: "Entrenamiento de modelo IA", descripcion: "Ajustar hiperparametros del modelo de clasificacion", completada: false }
-    ];
+    return [];
+  }
     localStorage.setItem(STORAGE_KEY, JSON.stringify(inicial));
     return inicial;
   }

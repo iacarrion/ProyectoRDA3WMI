@@ -97,7 +97,8 @@
 </div>
 
 <script>
-  const STORAGE_KEY = "eduplaner_tareas";
+  const sesionProgreso = JSON.parse(localStorage.getItem("eduplaner_sesion") || "null");
+  const STORAGE_KEY = "eduplaner_tareas_" + (sesionProgreso ? sesionProgreso.correo : "invitado");
 
   function obtenerDatosPorMateria(nombreMateria) {
     const guardado = localStorage.getItem(STORAGE_KEY);

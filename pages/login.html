@@ -14,7 +14,11 @@
 <main class="auth-card">
   <h2>Iniciar sesion</h2>
   <p class="subtitle">Ingresa tus datos para acceder a tu cuenta.</p>
-  <form novalidate>
+  <div id="errorLogin" class="alert alert--error" role="alert" style="display:none;">
+    <span class="alert-icon">!</span>
+    <span id="errorLoginTexto">Correo o contrasena incorrectos.</span>
+  </div>
+  <form id="formLogin" novalidate>
     <div class="field">
       <label for="correo">Correo electronico</label>
       <input class="input" type="email" id="correo" name="correo" placeholder="tucorreo@ejemplo.com">
@@ -27,5 +31,41 @@
   </form>
   <p class="switch-link">Aun no tienes cuenta? <a href="Registro.html">Registrate</a></p>
 </main>
+
+<script>
+  const CUENTAS_KEY = "eduplaner_cuentas";
+  const SESION_KEY = "eduplaner_sesion";
+
+  function obtenerCuentas() {
+    const guardado = localStorage.getItem(CUENTAS_KEY);
+    return guardado ? JSON.parse(guardado) : [];
+  }
+
+  document.getElementById("formLogin").addEventListener("submit", function(e) {
+    e.preventDefault();
+    const correo = document.getElementById("correo").value.trim().toLowerCase();
+    const password = document.getElementById("password").value;
+    const errorBox = document.getElementById("errorLogin");
+    const errorTexto = document.getElementById("errorLoginTexto");
+
+    if (!correo || !password) {
+      errorTexto.textContent = "Completa correo y contrasena.";
+      errorBox.style.display = "flex";
+      return;
+    }
+
+    const cuentas = obtenerCuentas();
+    const cuenta = cuentas.find(c => c.correo === correo && c.password === password);
+
+    if (!cuenta) {
+      errorTexto.textContent = "Correo o contrasena incorrectos. Si no tienes cuenta, registrate primero.";
+      errorBox.style.display = "flex";
+      return;
+    }
+
+    localStorage.setItem(SESION_KEY, JSON.stringify({ nombre: cuenta.nombre, correo: cuenta.correo }));
+    window.location.href = "../index.html";
+  });
+</script>
 </body>
 </html>
