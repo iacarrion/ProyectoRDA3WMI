@@ -2229,3 +2229,48 @@ header.topbar {
   .herr-layout { flex-direction: column; }
   .herr-sidebar { width: 100%; }
 }
+
+/* ============================================
+   CONFIGURACION - AJUSTES NUEVOS
+   ============================================ */
+.avatar-circle {
+  transition: outline 0.2s ease;
+}
+.user {
+  transition: transform 0.15s ease;
+}
+.user:hover {
+  transform: translateY(-2px);
+}
+.add-user-circle {
+  transition: background 0.2s ease;
+}
+
+/* ============================================
+   MODO OSCURO
+   ============================================ */
+body.dark-mode {
+  --color-text: #f1f3f5;
+  --color-background: #16181d;
+  --color-border: #2d323b;
+  background: #16181d;
+}
+body.dark-mode .page,
+body.dark-mode .card,
+body.dark-mode .auth-card,
+body.dark-mode header.topbar,
+body.dark-mode .panel,
+body.dark-mode .herr-sidebar,
+body.dark-mode .herr-content,
+body.dark-mode .chart-card {
+  background: #1f2229;
+  color: var(--color-text);
+}
+body.dark-mode .option {
+  color: var(--color-text) !important;
+}
+body.dark-mode .input {
+  background: #262a33;
+  color: #fff;
+  border-color: #3a3f4a;
+}
