@@ -3,170 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Configuracion de cuenta y usuarios de EduPlaner.">
 <title>Configuracion - EduPlaner</title>
 <link rel="stylesheet" href="../css/styles.css">
-<style>
-  body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    color: #000;
-    background: #fff;
-  }
-
-  .page {
-    max-width: 700px;
-    margin: 0 auto;
-    border: 1px solid #000;
-  }
-
-  .topbar {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px 15px;
-    border-bottom: 1px solid #000;
-    font-size: 13px;
-    gap: 8px;
-  }
-
-  .topbar a {
-    color: #000;
-    text-decoration: none;
-  }
-
-  .topbar .title {
-    font-weight: bold;
-    text-transform: uppercase;
-  }
-
-  .topbar .icons span {
-    margin-left: 8px;
-    border: 1px solid #000;
-    padding: 2px 6px;
-    font-size: 11px;
-  }
-
-  h1.page-title {
-    padding: 15px;
-    margin: 0;
-    font-size: 24px;
-    border-bottom: 1px solid #000;
-  }
-
-  .panel {
-    padding: 15px;
-  }
-
-  .panel h2 {
-    font-size: 12px;
-    text-transform: uppercase;
-    margin: 0 0 15px;
-    color: #333;
-  }
-
-  .users {
-    display: flex;
-    gap: 15px;
-    flex-wrap: wrap;
-    margin-bottom: 20px;
-  }
-
-  .user {
-    text-align: center;
-    font-size: 11px;
-    width: 70px;
-  }
-
-  .avatar-circle {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    border: 1px solid #000;
-    margin: 0 auto 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 14px;
-    font-weight: bold;
-  }
-
-  .option-list {
-    display: flex;
-    flex-direction: column;
-    border-top: 1px solid #000;
-  }
-
-  .option {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px 5px;
-    border-bottom: 1px solid #000;
-    font-size: 14px;
-    text-decoration: none;
-    color: #000;
-  }
-
-  .option .icon {
-    font-size: 14px;
-  }
-
-  .gap {
-    height: 15px;
-  }
-
-  /* ===== Responsivo (flexbox + media query) ===== */
-  @media (max-width: 600px) {
-    .page {
-      border-left: none;
-      border-right: none;
-    }
-    .panel {
-      padding: 12px;
-    }
-    .users {
-      justify-content: center;
-      gap: 10px;
-    }
-  }
-
-  @media (max-width: 400px) {
-    h1.page-title {
-      font-size: 20px;
-      padding: 12px;
-    }
-    .topbar {
-      padding: 10px 12px;
-    }
-    .user {
-      width: 60px;
-      font-size: 10px;
-    }
-    .avatar-circle {
-      width: 40px;
-      height: 40px;
-      font-size: 12px;
-    }
-    .option {
-      font-size: 13px;
-    }
-  }
-</style>
 </head>
 <body class="config-page">
 
 <div class="page">
 
   <div class="topbar">
-    <a href="index.html">&larr; Volver</a>
+    <a href="../index.html">&larr; Volver</a>
     <span class="title">Configuracion</span>
-    <div class="icons">
-      <span>[ ]</span>
-      <span>[ ]</span>
-      <span>[ ]</span>
-    </div>
   </div>
 
   <h1 class="page-title">CONFIGURACION</h1>
@@ -174,33 +21,166 @@
   <div class="panel">
     <h2>Elegir usuario</h2>
 
-    <div class="users">
-    <div class="users">
-      <div class="user add-user">
-        <div class="avatar-circle add-user-circle">+</div>
-        Agregar usuario
-      </div>
-    </div>
-      </div>
+    <div class="herr-search-box" style="max-width:280px; margin-bottom:14px;">
+      <span>&#128269;</span>
+      <input type="text" id="buscarUsuario" placeholder="Buscar usuario...">
     </div>
 
+    <div class="users" id="listaUsuarios"></div>
+
     <div class="option-list">
-      <a href="#" class="option"><span>Editar nombre</span><span class="icon">&#9998;</span></a>
-      <a href="#" class="option"><span>Accesibilidad</span><span class="icon">&#9776;</span></a>
-      <a href="#" class="option"><span>Agregar a favoritos</span><span class="icon">&#9734;</span></a>
-      <a href="#" class="option"><span>Buscar usuario</span><span class="icon">&#128269;</span></a>
-      <a href="#" class="option"><span>Agregar usuario</span><span class="icon">+</span></a>
+      <a href="#" class="option" id="btnEditarNombre"><span>Editar nombre del usuario activo</span><span class="icon">&#9998;</span></a>
+      <a href="#" class="option" id="btnAccesibilidad"><span>Accesibilidad (modo oscuro)</span><span class="icon">&#9776;</span></a>
+      <a href="#" class="option" id="btnFavorito"><span>Marcar usuario como favorito</span><span class="icon">&#9734;</span></a>
+      <a href="#" class="option" id="btnAgregarUsuario"><span>Agregar usuario</span><span class="icon">+</span></a>
     </div>
 
     <div class="gap"></div>
 
     <div class="option-list">
-      <a href="#" class="option"><span>Cambiar nombre</span><span class="icon">&#9998;</span></a>
-      <a href="#" class="option"><span>Cerrar sesion</span><span class="icon">&#9099;</span></a>
+      <a href="#" class="option" id="btnEliminarUsuario"><span>Eliminar usuario activo</span><span class="icon">&#128465;</span></a>
+      <a href="#" class="option" id="btnCerrarSesion"><span>Cerrar sesion</span><span class="icon">&#9099;</span></a>
     </div>
   </div>
 
 </div>
+
+<script>
+  const USERS_KEY = "eduplaner_usuarios";
+  const ACTIVE_KEY = "eduplaner_usuario_activo";
+
+  function obtenerUsuarios() {
+    const guardado = localStorage.getItem(USERS_KEY);
+    if (guardado) return JSON.parse(guardado);
+    const inicial = [
+      { nombre: "Sandy Wilder", favorito: false },
+      { nombre: "Kevin Leang", favorito: false },
+      { nombre: "Juliana Mejia", favorito: false }
+    ];
+    localStorage.setItem(USERS_KEY, JSON.stringify(inicial));
+    return inicial;
+  }
+
+  function guardarUsuarios(usuarios) {
+    localStorage.setItem(USERS_KEY, JSON.stringify(usuarios));
+  }
+
+  function obtenerActivo() {
+    return localStorage.getItem(ACTIVE_KEY) || (obtenerUsuarios()[0] ? obtenerUsuarios()[0].nombre : null);
+  }
+
+  function iniciales(nombre) {
+    return nombre.split(" ").map(p => p.charAt(0).toUpperCase()).slice(0, 2).join("");
+  }
+
+  function renderizarUsuarios(filtro) {
+    const usuarios = obtenerUsuarios();
+    const activo = obtenerActivo();
+    const contenedor = document.getElementById("listaUsuarios");
+    contenedor.innerHTML = "";
+
+    const filtrados = filtro
+      ? usuarios.filter(u => u.nombre.toLowerCase().includes(filtro.toLowerCase()))
+      : usuarios;
+
+    filtrados.forEach(function(u) {
+      const div = document.createElement("div");
+      div.className = "user";
+      div.style.cursor = "pointer";
+      if (u.nombre === activo) {
+        div.style.outline = "2px solid var(--color-primary)";
+        div.style.borderRadius = "10px";
+        div.style.padding = "4px";
+      }
+      div.innerHTML =
+        '<div class="avatar-circle">' + iniciales(u.nombre) + (u.favorito ? ' &#9733;' : '') + '</div>' +
+        u.nombre;
+      div.addEventListener("click", function() {
+        localStorage.setItem(ACTIVE_KEY, u.nombre);
+        renderizarUsuarios(document.getElementById("buscarUsuario").value);
+      });
+      contenedor.appendChild(div);
+    });
+
+    const addDiv = document.createElement("div");
+    addDiv.className = "user add-user";
+    addDiv.style.cursor = "pointer";
+    addDiv.innerHTML = '<div class="avatar-circle add-user-circle">+</div>Agregar usuario';
+    addDiv.addEventListener("click", agregarUsuario);
+    contenedor.appendChild(addDiv);
+  }
+
+  function agregarUsuario() {
+    const nombre = prompt("Nombre del nuevo usuario:");
+    if (!nombre) return;
+    const usuarios = obtenerUsuarios();
+    usuarios.push({ nombre: nombre, favorito: false });
+    guardarUsuarios(usuarios);
+    localStorage.setItem(ACTIVE_KEY, nombre);
+    renderizarUsuarios("");
+  }
+
+  document.getElementById("buscarUsuario").addEventListener("input", function() {
+    renderizarUsuarios(this.value);
+  });
+
+  document.getElementById("btnAgregarUsuario").addEventListener("click", function(e) {
+    e.preventDefault();
+    agregarUsuario();
+  });
+
+  document.getElementById("btnEditarNombre").addEventListener("click", function(e) {
+    e.preventDefault();
+    const activo = obtenerActivo();
+    if (!activo) { alert("No hay un usuario activo seleccionado."); return; }
+    const nuevoNombre = prompt("Nuevo nombre para " + activo + ":", activo);
+    if (!nuevoNombre) return;
+    const usuarios = obtenerUsuarios().map(u => u.nombre === activo ? { ...u, nombre: nuevoNombre } : u);
+    guardarUsuarios(usuarios);
+    localStorage.setItem(ACTIVE_KEY, nuevoNombre);
+    renderizarUsuarios("");
+  });
+
+  document.getElementById("btnFavorito").addEventListener("click", function(e) {
+    e.preventDefault();
+    const activo = obtenerActivo();
+    if (!activo) { alert("No hay un usuario activo seleccionado."); return; }
+    const usuarios = obtenerUsuarios().map(u => u.nombre === activo ? { ...u, favorito: !u.favorito } : u);
+    guardarUsuarios(usuarios);
+    renderizarUsuarios("");
+  });
+
+  document.getElementById("btnEliminarUsuario").addEventListener("click", function(e) {
+    e.preventDefault();
+    const activo = obtenerActivo();
+    if (!activo) { alert("No hay un usuario activo seleccionado."); return; }
+    if (!confirm("Eliminar a " + activo + "?")) return;
+    const usuarios = obtenerUsuarios().filter(u => u.nombre !== activo);
+    guardarUsuarios(usuarios);
+    localStorage.removeItem(ACTIVE_KEY);
+    renderizarUsuarios("");
+  });
+
+  document.getElementById("btnAccesibilidad").addEventListener("click", function(e) {
+    e.preventDefault();
+    document.body.classList.toggle("dark-mode");
+    localStorage.setItem("eduplaner_modo_oscuro", document.body.classList.contains("dark-mode"));
+    alert("Modo oscuro " + (document.body.classList.contains("dark-mode") ? "activado" : "desactivado"));
+  });
+
+  document.getElementById("btnCerrarSesion").addEventListener("click", function(e) {
+    e.preventDefault();
+    if (!confirm("Deseas cerrar sesion?")) return;
+    localStorage.removeItem(ACTIVE_KEY);
+    window.location.href = "login.html";
+  });
+
+  if (localStorage.getItem("eduplaner_modo_oscuro") === "true") {
+    document.body.classList.add("dark-mode");
+  }
+
+  renderizarUsuarios("");
+</script>
 
 </body>
 </html>
