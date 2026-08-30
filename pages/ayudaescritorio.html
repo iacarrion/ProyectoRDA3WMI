@@ -54,6 +54,14 @@
       </div>
     </section>
 
+    <section class="chatbot-box">
+      <h2>ASISTENTE VIRTUAL</h2>
+      <div id="chatMensajes" class="chatbot-mensajes"></div>
+      <div class="chatbot-input-row">
+        <input type="text" id="chatInput" class="input" placeholder="Escribe tu pregunta aqui...">
+        <button type="button" id="chatEnviar" class="btn btn--primary">Enviar</button>
+      </div>
+    </section>
   </main>
 
 <script>
@@ -65,19 +73,11 @@
       li.style.display = contenido.includes(texto) ? 'block' : 'none';
     });
   }
-
-  document.querySelector('.hero-input').addEventListener('input', function() {
+  document.querySelector(".search-input").addEventListener("input", function() {
     filtrarPreguntas(this.value);
-    document.querySelector('.search-input').value = this.value;
   });
-
-  document.querySelector('.search-input').addEventListener('input', function() {
-    filtrarPreguntas(this.value);
-    document.querySelector('.hero-input').value = this.value;
-  });
-
-  document.querySelector('.btn-submit').addEventListener('click', function() {
-    filtrarPreguntas(document.querySelector('.hero-input').value);
+  document.querySelector(".btn-search").addEventListener("click", function() {
+    filtrarPreguntas(document.querySelector(".search-input").value);
   });
 
   document.querySelector('.btn-search').addEventListener('click', function() {
@@ -90,6 +90,56 @@
       alert('Respuesta: ' + link.textContent + '\n\n(Esta funcionalidad se ampliara proximamente con respuestas detalladas)');
     });
   });
+
+  const baseConocimiento = [
+    { palabras: ["tarea", "crear tarea", "nueva tarea", "agregar tarea"], respuesta: "Para crear una tarea, ve a la pantalla Tareas, elige una materia, escribe un titulo y presiona '+ Agregar tarea'." },
+    { palabras: ["completar", "completada", "marcar", "terminar"], respuesta: "Para marcar una tarea como completada, da clic en la casilla (checkbox) que esta al lado de esa tarea, en la pantalla Tareas." },
+    { palabras: ["calendario", "examen", "examenes"], respuesta: "En la pantalla Calendario puedes ver tus examenes y agregar uno nuevo con el boton '+ Agregar examen'." },
+    { palabras: ["recordatorio", "recordatorios", "alerta"], respuesta: "En la pantalla Recordatorios puedes agregar avisos con el boton '+ Agregar recordatorio', y eliminarlos dando clic sobre ellos." },
+    { palabras: ["progreso", "avance", "porcentaje"], respuesta: "Tu progreso se calcula automaticamente segun las tareas que completes por materia. Puedes verlo en la pantalla Progreso." },
+    { palabras: ["registro", "cuenta", "registrarme"], respuesta: "Para crear una cuenta, ve a la pantalla Registro y completa tus datos: nombre, correo y contrasena." },
+    { palabras: ["materia", "materias", "otra materia"], respuesta: "Al crear una tarea puedes elegir una materia existente o seleccionar '+ Otra materia...' para escribir una nueva." },
+    { palabras: ["hola", "buenas", "ayuda"], respuesta: "Hola! Soy el asistente de EduPlaner. Puedes preguntarme sobre tareas, calendario, progreso, recordatorios o registro." }
+  ];
+
+  function buscarRespuesta(pregunta) {
+    const texto = pregunta.toLowerCase();
+    for (const item of baseConocimiento) {
+      if (item.palabras.some(function(palabra) { return texto.includes(palabra); })) {
+        return item.respuesta;
+      }
+    }
+    return "No tengo una respuesta exacta para eso todavia, pero puedes revisar las preguntas frecuentes de arriba o intentar con otras palabras.";
+  }
+
+  function agregarMensaje(texto, tipo) {
+    const contenedor = document.getElementById("chatMensajes");
+    const msg = document.createElement("div");
+    msg.className = "chat-msg " + tipo;
+    msg.textContent = texto;
+    contenedor.appendChild(msg);
+    contenedor.scrollTop = contenedor.scrollHeight;
+  }
+
+  function enviarPregunta() {
+    const input = document.getElementById("chatInput");
+    const pregunta = input.value.trim();
+    if (!pregunta) return;
+
+    agregarMensaje(pregunta, "usuario");
+    input.value = "";
+
+    setTimeout(function() {
+      agregarMensaje(buscarRespuesta(pregunta), "bot");
+    }, 400);
+  }
+
+  document.getElementById("chatEnviar").addEventListener("click", enviarPregunta);
+  document.getElementById("chatInput").addEventListener("keypress", function(e) {
+    if (e.key === "Enter") enviarPregunta();
+  });
+
+  agregarMensaje("Hola! Soy el asistente de EduPlaner. Preguntame como usar la aplicacion.", "bot");
 </script>
 </body>
 </html>
